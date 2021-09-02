@@ -10,10 +10,10 @@ leg_weights = {}
 for p in 'ABCDEFGHIJ':
     leg_weights[p] = {}
 leg_weights['A']['B'] = 2.0
-leg_weights['A']['C'] = 1.6
 leg_weights['A']['E'] = 3.6
-leg_weights['E']['G'] = 4.0
+leg_weights['B']['C'] = 1.6
 leg_weights['B']['F'] = 3.45
+leg_weights['E']['G'] = 4.0
 leg_weights['G']['J'] = 3.65
 leg_weights['D']['C'] = 5.3
 leg_weights['H']['I'] = 5.3
