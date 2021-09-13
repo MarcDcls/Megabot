@@ -469,19 +469,19 @@ if __name__ == '__main__':
 
         nb_steps = 30
         traj_leg = traj_abs_sin_1(nb_steps, 200, 0)
-        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 0)
+        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 0, com_radius=200)
         draw_abs(LV, LO, LOmega, com=True)
 
         traj_leg = traj_abs_sin_1(nb_steps, 200, 2)
-        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 2)
+        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 2, com_radius=200)
         draw_abs(LV, LO, LOmega, com=True)
 
         traj_leg = traj_abs_sin_1(nb_steps, 200, 3)
-        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 3)
+        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 3, com_radius=200)
         draw_abs(LV, LO, LOmega, com=True)
 
         traj_leg = traj_abs_sin_1(nb_steps, 200, 1)
-        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 1)
+        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 1, com_radius=200)
         draw_abs(LV, LO, LOmega, com=True)
 
         # init()

@@ -643,7 +643,7 @@ def gen_com_traj(leg_id, nb_steps, radius=150):
     return center + R @ endpoint
 
 
-def move_abs_leg_autocom(traj, leg_id, reg_val=0.01, const_omega=True, max_omega=10, passenger_weight=80.0):
+def move_abs_leg_autocom(traj, leg_id, com_radius=150, reg_val=0.01, const_omega=True, max_omega=10, passenger_weight=80.0):
     """
     Fait suivre la trajectoire traj à leg_id en faisant effectuer sa rotation autour du centre à com.
     Suppose que com soit à l'opposée de leg_id sur son cercle de parcours au début du mouvement.
@@ -668,7 +668,7 @@ def move_abs_leg_autocom(traj, leg_id, reg_val=0.01, const_omega=True, max_omega
         set_X(X0)
         com = robot_ref_to_abs(center_of_mass(V, passenger_weight=passenger_weight), O, Omega)
         set_com(com)
-        dX = np.concatenate((traj_legs[i] - X0, gen_com_traj(leg_id, nb_steps - i) - com[0:2]))
+        dX = np.concatenate((traj_legs[i] - X0, gen_com_traj(leg_id, nb_steps - i, radius=com_radius) - com[0:2]))
 
         # Contraintes
         lb = np.full(18, - np.inf)
@@ -709,6 +709,31 @@ def move_abs_leg_autocom(traj, leg_id, reg_val=0.01, const_omega=True, max_omega
     set_com(com)
     return LV, LO, LOmega
 
+
+def legs_up(nb_steps=30, amp=200, com_radius=150, passenger_weight=80.0):
+    LV = init_com(nb_steps=20)[0]
+
+    traj_leg = traj_abs_sin_1(nb_steps, amp, 0)
+    lv = move_abs_leg_autocom(traj_leg, 0, com_radius=com_radius, passenger_weight=passenger_weight)[0]
+    for i in range(nb_steps):
+        LV.append(lv[i])
+
+    traj_leg = traj_abs_sin_1(nb_steps, amp, 2)
+    lv = move_abs_leg_autocom(traj_leg, 2, com_radius=com_radius, passenger_weight=passenger_weight)[0]
+    for i in range(nb_steps):
+        LV.append(lv[i])
+
+    traj_leg = traj_abs_sin_1(nb_steps, amp, 3)
+    lv = move_abs_leg_autocom(traj_leg, 3, com_radius=com_radius, passenger_weight=passenger_weight)[0]
+    for i in range(nb_steps):
+        LV.append(lv[i])
+
+    traj_leg = traj_abs_sin_1(nb_steps, amp, 1)
+    lv = move_abs_leg_autocom(traj_leg, 1, com_radius=com_radius, passenger_weight=passenger_weight)[0]
+    for i in range(nb_steps):
+        LV.append(lv[i])
+
+    return LV
 
 ################################ DEPRECATED ###################################
 

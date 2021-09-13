@@ -1,0 +1,8 @@
+{
+    "documentId": "2301a4283c82201cba1277f9",
+    "versionId": "296251a698a2109065d49eb2",
+    "outputFormat": "urdf",
+    "assemblyName": "Megabot",
+    "robotName": "megabot",
+    "useScads": true
+}

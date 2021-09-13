@@ -1,0 +1,2681 @@
+<robot name="megabot">
+<link name="chassis">
+<visual>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://chassis.stl"/>
+</geometry>
+<material name="chassis_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="0 -0 0" />
+<geometry>
+<mesh filename="package://chassis.stl"/>
+</geometry>
+<material name="chassis_material">
+<color rgba="0.615686 0.811765 0.929412 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-3.3553e-16 -0.525 0.000101117" rpy="0 0 0"/>
+<mass value="139.991" />
+<inertia ixx="23.042" ixy="-6.90459e-14"  ixz="-7.87828e-16" iyy="23.0687" iyz="-1.23065e-15" izz="46.0044" />
+</inertial>
+</link>
+
+<link name="hanche">
+<visual>
+<origin xyz="-0.065 -1.11022e-16 0" rpy="3.14159 4.10938e-30 6.15117e-17" />
+<geometry>
+<mesh filename="package://hanche.stl"/>
+</geometry>
+<material name="hanche_material">
+<color rgba="0.647059 0.647059 0.647059 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.065 -1.11022e-16 0" rpy="3.14159 4.10938e-30 6.15117e-17" />
+<geometry>
+<mesh filename="package://hanche.stl"/>
+</geometry>
+<material name="hanche_material">
+<color rgba="0.647059 0.647059 0.647059 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.0375418 -9.90181e-17 -0.0164898" rpy="0 0 0"/>
+<mass value="3.6" />
+<inertia ixx="0.00825192" ixy="-8.31188e-18"  ixz="-0.0120504" iyy="0.126424" iyz="7.81791e-19" izz="0.128671" />
+</inertial>
+</link>
+
+<link name="cuisse">
+<visual>
+<origin xyz="-2.22045e-16 -0.2425 0.03" rpy="1.5708 4.85434e-17 3.56656e-17" />
+<geometry>
+<mesh filename="package://cuisse.stl"/>
+</geometry>
+<material name="cuisse_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-2.22045e-16 -0.2425 0.03" rpy="1.5708 4.85434e-17 3.56656e-17" />
+<geometry>
+<mesh filename="package://cuisse.stl"/>
+</geometry>
+<material name="cuisse_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.00641397 -0.245927 -0.02" rpy="0 0 0"/>
+<mass value="3.6" />
+<inertia ixx="0.0813908" ixy="0.000199157"  ixz="-1.17828e-10" iyy="0.00807931" iyz="-5.77024e-11" izz="0.0746916" />
+</inertial>
+</link>
+
+<link name="tibia">
+<visual>
+<origin xyz="-0.375 0 -1.11022e-16" rpy="1.5708 -5.91512e-17 0" />
+<geometry>
+<mesh filename="package://tibia.stl"/>
+</geometry>
+<material name="tibia_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.375 0 -1.11022e-16" rpy="1.5708 -5.91512e-17 0" />
+<geometry>
+<mesh filename="package://tibia.stl"/>
+</geometry>
+<material name="tibia_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.374888 1.52019e-19 -0.02" rpy="0 0 0"/>
+<mass value="4" />
+<inertia ixx="0.00296427" ixy="1.26598e-17"  ixz="-2.04361e-47" iyy="0.21898" iyz="-2.08033e-30" izz="0.219917" />
+</inertial>
+</link>
+
+<link name="pied">
+<visual>
+<origin xyz="0 0.3475 0.07" rpy="1.5708 1.84297e-17 0" />
+<geometry>
+<mesh filename="package://pied.stl"/>
+</geometry>
+<material name="pied_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<!-- Shapes for pied -->
+<collision>
+<origin xyz="0.005 1.0075 0.02" rpy="1.5708 1.84297e-17 0" />
+<geometry>
+<sphere radius="0.0325" />
+</geometry>
+</collision>
+<inertial>
+<origin xyz="0.00674789 0.371096 0.02" rpy="0 0 0"/>
+<mass value="3.65" />
+<inertia ixx="0.27435" ixy="-0.000537481"  ixz="3.18069e-08" iyy="0.00564812" iyz="3.38106e-09" izz="0.270045" />
+</inertial>
+</link>
+
+<link name="vérin_m">
+<visual>
+<origin xyz="-0.3275 -0.0355 -1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 -1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f">
+<visual>
+<origin xyz="-1.11022e-16 -0.0355 0.05" rpy="1.5708 -2.90321e-17 -1.60446e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-1.11022e-16 -0.0355 0.05" rpy="1.5708 -2.90321e-17 -1.60446e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur">
+<visual>
+<origin xyz="2.22045e-16 0 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="2.22045e-16 0 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="2.22045e-16 1.16945e-19 -2.10042e-18" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="4.76071e-24"  ixz="3.09318e-24" iyy="8.14301e-09" iyz="4.52223e-25" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_07" type="fixed">
+<origin xyz="-3.33067e-16 -1.11022e-16 -0.068" rpy="7.4678e-16 1.5708 0" />
+<parent link="vérin_f" />
+<child link="connecteur" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="0v2" type="prismatic">
+<origin xyz="-0.382 2.22045e-16 2.22045e-16" rpy="-3.14159 -1.5708 0" />
+<parent link="vérin_m" />
+<child link="vérin_f" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="07" type="revolute">
+<origin xyz="0 0.505 0.02" rpy="3.14159 -2.23164e-15 0.354305" />
+<parent link="pied" />
+<child link="vérin_m" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="03" type="revolute">
+<origin xyz="-0.75 0 2.22045e-16" rpy="3.14159 -7.51254e-16 3.14159" />
+<parent link="tibia" />
+<child link="pied" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="support_v2">
+<visual>
+<origin xyz="-2.22045e-16 0.3475 0.07" rpy="1.5708 -6.03051e-17 8.08239e-31" />
+<geometry>
+<mesh filename="package://support_v2.stl"/>
+</geometry>
+<material name="support_v2_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-2.22045e-16 0.3475 0.07" rpy="1.5708 -6.03051e-17 8.08239e-31" />
+<geometry>
+<mesh filename="package://support_v2.stl"/>
+</geometry>
+<material name="support_v2_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.00543544 0.291712 0.0198471" rpy="0 0 0"/>
+<mass value="3.45" />
+<inertia ixx="0.122164" ixy="-0.000142254"  ixz="-9.00296e-06" iyy="0.00809203" iyz="1.75617e-05" izz="0.115362" />
+</inertial>
+</link>
+
+<link name="connecteur_2">
+<visual>
+<origin xyz="0 0 -0.02" rpy="-1.5708 -1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 -0.02" rpy="-1.5708 -1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-4.8347e-35 -1.16945e-19 -0.02" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="-4.07048e-24"  ixz="-7.71956e-38" iyy="8.14301e-09" iyz="-5.13438e-38" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_01" type="fixed">
+<origin xyz="-2.22045e-16 0.59 1.66533e-16" rpy="3.14159 -6.03051e-17 8.08239e-31" />
+<parent link="support_v2" />
+<child link="connecteur_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_3">
+<visual>
+<origin xyz="-2.22045e-16 -5.55112e-17 -1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-2.22045e-16 -5.55112e-17 -1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-2.22045e-16 -5.53942e-17 -1.13123e-16" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="-4.07048e-24"  ixz="-7.71956e-38" iyy="8.14301e-09" iyz="-5.13438e-38" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_06" type="fixed">
+<origin xyz="-4.44089e-16 0.1975 0.02" rpy="-3.56138e-31 -6.03051e-17 8.08239e-31" />
+<parent link="support_v2" />
+<child link="connecteur_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="04" type="revolute">
+<origin xyz="-0.45 0 -0.04" rpy="-8.53089e-16 9.83997e-16 -5.90114e-14" />
+<parent link="tibia" />
+<child link="support_v2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="02" type="revolute">
+<origin xyz="-4.44089e-16 -0.49 0" rpy="-2.09401e-16 6.42827e-16 0.354305" />
+<parent link="cuisse" />
+<child link="tibia" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="vérin_m_2">
+<visual>
+<origin xyz="-0.3275 -0.0355 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_2">
+<visual>
+<origin xyz="1.11022e-16 -0.0355 0.05" rpy="1.5708 7.00708e-17 -2.8751e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="1.11022e-16 -0.0355 0.05" rpy="1.5708 7.00708e-17 -2.8751e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_4">
+<visual>
+<origin xyz="-2.22045e-16 0 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-2.22045e-16 0 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-2.22045e-16 1.16945e-19 -2.10042e-18" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="3.15384e-24"  ixz="4.67715e-24" iyy="8.14301e-09" iyz="-2.15897e-24" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_05" type="fixed">
+<origin xyz="1.11022e-16 0 -0.068" rpy="3.89677e-16 -1.5708 0" />
+<parent link="vérin_f_2" />
+<child link="connecteur_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="0v1" type="prismatic">
+<origin xyz="-0.382 -1.11022e-16 0" rpy="9.98366e-17 1.5708 0" />
+<parent link="vérin_m_2" />
+<child link="vérin_f_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="06" type="revolute">
+<origin xyz="-0.013 -0.384 -0.02" rpy="2.39352e-17 -9.05844e-16 3.56656e-17" />
+<parent link="cuisse" />
+<child link="vérin_m_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="01" type="revolute">
+<origin xyz="0.125 -0.02 -0.04" rpy="1.5708 0.354305 -3.07284e-15" />
+<parent link="hanche" />
+<child link="cuisse" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="vérin_m_3">
+<visual>
+<origin xyz="-0.3275 -0.0355 -7.57941e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 -7.57941e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_3">
+<visual>
+<origin xyz="0 -0.0355 0.05" rpy="1.5708 -4.42274e-43 -4.33505e-43" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 -0.0355 0.05" rpy="1.5708 -4.42274e-43 -4.33505e-43" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_5">
+<visual>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-3.11499e-52 1.16945e-19 -3.65694e-19" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="7.69789e-40"  ixz="-4.54983e-41" iyy="8.14301e-09" iyz="1.36569e-40" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_03" type="fixed">
+<origin xyz="0 0 -0.068" rpy="-3.14159 1.5708 0" />
+<parent link="vérin_f_3" />
+<child link="connecteur_5" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="0v3" type="prismatic">
+<origin xyz="-0.382 -7.54952e-15 7.56484e-15" rpy="1.41553e-15 1.5708 0" />
+<parent link="vérin_m_3" />
+<child link="vérin_f_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="05" type="revolute">
+<origin xyz="0.275 6.88338e-15 0.025" rpy="4.25239e-14 -4.22965e-14 2.49723" />
+<parent link="hanche" />
+<child link="vérin_m_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="0" upper="0"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_6">
+<visual>
+<origin xyz="0 -1.38778e-17 0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 -1.38778e-17 0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-9.45571e-35 -1.37608e-17 0.02" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="-6.60117e-25"  ixz="2.94369e-37" iyy="8.14301e-09" iyz="5.8565e-37" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_00" type="fixed">
+<origin xyz="-0.125 -0.02 -0.04" rpy="-1.5708 -2.86191e-28 -1.29302e-15" />
+<parent link="hanche" />
+<child link="connecteur_6" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_7">
+<visual>
+<origin xyz="0 0 1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="1.36269e-34 1.16945e-19 1.08922e-16" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="4.48903e-24"  ixz="2.94369e-37" iyy="8.14301e-09" iyz="2.27067e-37" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_04" type="fixed">
+<origin xyz="-0.41 -2.22045e-16 -0.095" rpy="1.5708 4.10938e-30 6.15117e-17" />
+<parent link="hanche" />
+<child link="connecteur_7" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="00" type="revolute">
+<origin xyz="0.5 -1.025 0.025" rpy="-3.14159 5.94873e-14 2.49723" />
+<parent link="chassis" />
+<child link="hanche" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="hanche_2">
+<visual>
+<origin xyz="-0.065 0 0" rpy="3.14159 -8.96831e-43 9.93039e-18" />
+<geometry>
+<mesh filename="package://hanche.stl"/>
+</geometry>
+<material name="hanche_material">
+<color rgba="0.647059 0.647059 0.647059 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.065 0 0" rpy="3.14159 -8.96831e-43 9.93039e-18" />
+<geometry>
+<mesh filename="package://hanche.stl"/>
+</geometry>
+<material name="hanche_material">
+<color rgba="0.647059 0.647059 0.647059 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.0375418 1.05879e-17 -0.0164898" rpy="0 0 0"/>
+<mass value="3.6" />
+<inertia ixx="0.00825192" ixy="-1.78866e-18"  ixz="-0.0120504" iyy="0.126424" iyz="7.78671e-19" izz="0.128671" />
+</inertial>
+</link>
+
+<link name="cuisse_2">
+<visual>
+<origin xyz="1.11022e-16 -0.2425 0.03" rpy="1.5708 -2.0439e-17 -3.55671e-18" />
+<geometry>
+<mesh filename="package://cuisse.stl"/>
+</geometry>
+<material name="cuisse_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="1.11022e-16 -0.2425 0.03" rpy="1.5708 -2.0439e-17 -3.55671e-18" />
+<geometry>
+<mesh filename="package://cuisse.stl"/>
+</geometry>
+<material name="cuisse_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.00641397 -0.245927 -0.02" rpy="0 0 0"/>
+<mass value="3.6" />
+<inertia ixx="0.0813908" ixy="0.000199157"  ixz="-1.17828e-10" iyy="0.00807931" iyz="-5.77024e-11" izz="0.0746916" />
+</inertial>
+</link>
+
+<link name="tibia_2">
+<visual>
+<origin xyz="-0.375 0 -0.04" rpy="-1.5708 -7.80167e-18 0" />
+<geometry>
+<mesh filename="package://tibia.stl"/>
+</geometry>
+<material name="tibia_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.375 0 -0.04" rpy="-1.5708 -7.80167e-18 0" />
+<geometry>
+<mesh filename="package://tibia.stl"/>
+</geometry>
+<material name="tibia_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.374888 -1.52019e-19 -0.02" rpy="0 0 0"/>
+<mass value="4" />
+<inertia ixx="0.00296427" ixy="-1.65841e-18"  ixz="1.54775e-48" iyy="0.21898" iyz="-1.38074e-31" izz="0.219917" />
+</inertial>
+</link>
+
+<link name="pied_2">
+<visual>
+<origin xyz="0 0.3475 0.07" rpy="1.5708 -6.48742e-18 6.34434e-31" />
+<geometry>
+<mesh filename="package://pied.stl"/>
+</geometry>
+<material name="pied_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<!-- Shapes for pied -->
+<collision>
+<origin xyz="0.005 1.0075 0.02" rpy="1.5708 -6.48742e-18 6.34434e-31" />
+<geometry>
+<sphere radius="0.0325" />
+</geometry>
+</collision>
+<inertial>
+<origin xyz="0.00674789 0.371096 0.02" rpy="0 0 0"/>
+<mass value="3.65" />
+<inertia ixx="0.27435" ixy="-0.000537481"  ixz="3.18069e-08" iyy="0.00564812" iyz="3.38106e-09" izz="0.270045" />
+</inertial>
+</link>
+
+<link name="vérin_m_4">
+<visual>
+<origin xyz="-0.3275 -0.0355 -2.22045e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 -2.22045e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_4">
+<visual>
+<origin xyz="2.77556e-16 -0.0355 0.05" rpy="1.5708 -3.28974e-17 -1.14711e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="2.77556e-16 -0.0355 0.05" rpy="1.5708 -3.28974e-17 -1.14711e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32077e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_8">
+<visual>
+<origin xyz="0 0 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="1.83782e-34 1.16945e-19 -2.10042e-18" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="9.75986e-26"  ixz="-2.27656e-24" iyy="8.14301e-09" iyz="-3.7795e-24" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_17" type="fixed">
+<origin xyz="1.66533e-16 1.11022e-16 -0.068" rpy="1.77933e-16 1.5708 0" />
+<parent link="vérin_f_4" />
+<child link="connecteur_8" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="1v2" type="prismatic">
+<origin xyz="-0.382 1.11022e-16 -3.55271e-15" rpy="-3.14159 -1.5708 0" />
+<parent link="vérin_m_4" />
+<child link="vérin_f_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="17" type="revolute">
+<origin xyz="0 0.505 0.02" rpy="-3.14159 -8.22573e-15 0.354305" />
+<parent link="pied_2" />
+<child link="vérin_m_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="13" type="revolute">
+<origin xyz="-0.75 0 -0.04" rpy="-8.6533e-16 3.17465e-16 -3.14159" />
+<parent link="tibia_2" />
+<child link="pied_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="support_v2_2">
+<visual>
+<origin xyz="0 -0.3475 -0.03" rpy="-1.5708 1.04295e-17 -5.55772e-32" />
+<geometry>
+<mesh filename="package://support_v2.stl"/>
+</geometry>
+<material name="support_v2_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 -0.3475 -0.03" rpy="-1.5708 1.04295e-17 -5.55772e-32" />
+<geometry>
+<mesh filename="package://support_v2.stl"/>
+</geometry>
+<material name="support_v2_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.00543544 -0.291712 0.0201529" rpy="0 0 0"/>
+<mass value="3.45" />
+<inertia ixx="0.122164" ixy="0.000142254"  ixz="9.00296e-06" iyy="0.00809203" iyz="1.75617e-05" izz="0.115362" />
+</inertial>
+</link>
+
+<link name="connecteur_9">
+<visual>
+<origin xyz="0 1.38778e-17 0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 1.38778e-17 0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-9.22538e-35 1.39947e-17 0.02" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="3.01165e-24"  ixz="2.48533e-38" iyy="8.14301e-09" iyz="2.1884e-39" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_11" type="fixed">
+<origin xyz="0 -0.59 -1.11022e-16" rpy="-1.74276e-15 1.20699e-15 -8.44438e-31" />
+<parent link="support_v2_2" />
+<child link="connecteur_9" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_10">
+<visual>
+<origin xyz="2.22045e-16 0 -1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="2.22045e-16 0 -1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="2.22045e-16 1.16945e-19 -1.13123e-16" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="-1.33576e-24"  ixz="1.61657e-38" iyy="8.14301e-09" iyz="-1.69565e-40" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_16" type="fixed">
+<origin xyz="0 -0.1975 0.02" rpy="-3.14159 1.04295e-17 -5.55772e-32" />
+<parent link="support_v2_2" />
+<child link="connecteur_10" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="14" type="revolute">
+<origin xyz="-0.45 -6.88338e-15 -0.04" rpy="-1.16184e-15 -9.85516e-16 1.36364e-14" />
+<parent link="tibia_2" />
+<child link="support_v2_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="12" type="revolute">
+<origin xyz="1.33227e-15 -0.49 -0.04" rpy="3.14159 -2.14867e-15 0.354305" />
+<parent link="cuisse_2" />
+<child link="tibia_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="vérin_m_5">
+<visual>
+<origin xyz="-0.3275 -0.0355 -5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 -5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_5">
+<visual>
+<origin xyz="1.11022e-16 -0.0355 0.05" rpy="1.5708 -1.89056e-17 1.39775e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="1.11022e-16 -0.0355 0.05" rpy="1.5708 -1.89056e-17 1.39775e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_11">
+<visual>
+<origin xyz="-2.22045e-16 1.11022e-16 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-2.22045e-16 1.11022e-16 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-2.22045e-16 1.11139e-16 -2.10042e-18" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="2.07242e-24"  ixz="-5.70892e-25" iyy="8.14301e-09" iyz="-2.56768e-24" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_15" type="fixed">
+<origin xyz="0 -1.11022e-16 -0.068" rpy="-2.3799e-16 -1.5708 0" />
+<parent link="vérin_f_5" />
+<child link="connecteur_11" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="1v1" type="prismatic">
+<origin xyz="-0.382 -1.11022e-16 0" rpy="2.95496e-15 1.5708 0" />
+<parent link="vérin_m_5" />
+<child link="vérin_f_5" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="16" type="revolute">
+<origin xyz="-0.013 -0.384 -0.02" rpy="-5.72707e-17 -1.57283e-15 -1.41271e-15" />
+<parent link="cuisse_2" />
+<child link="vérin_m_5" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="11" type="revolute">
+<origin xyz="0.125 -0.02 -0.04" rpy="1.5708 0.354305 1.65016e-15" />
+<parent link="hanche_2" />
+<child link="cuisse_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="vérin_m_6">
+<visual>
+<origin xyz="-0.3275 -0.0355 -6.93889e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 -6.93889e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_6">
+<visual>
+<origin xyz="-1.73472e-18 -0.0355 0.05" rpy="1.5708 1.04275e-30 1.8963e-33" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-1.73472e-18 -0.0355 0.05" rpy="1.5708 1.04275e-30 1.8963e-33" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_12">
+<visual>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.65357e-48 1.16945e-19 -3.65694e-19" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="3.68586e-39"  ixz="1.06738e-38" iyy="8.14301e-09" iyz="6.678e-40" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_13" type="fixed">
+<origin xyz="-1.73472e-18 0 -0.068" rpy="2.13504e-16 1.5708 0" />
+<parent link="vérin_f_6" />
+<child link="connecteur_12" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="1v3" type="prismatic">
+<origin xyz="-0.382 5.55112e-17 9.97466e-16" rpy="-4.63456e-30 1.5708 0" />
+<parent link="vérin_m_6" />
+<child link="vérin_f_6" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="15" type="revolute">
+<origin xyz="0.275 -1.11022e-16 0.014" rpy="2.10014e-26 2.07112e-26 2.41444" />
+<parent link="hanche_2" />
+<child link="vérin_m_6" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="0" upper="0"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_13">
+<visual>
+<origin xyz="2.22045e-16 0 0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="2.22045e-16 0 0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="2.22045e-16 1.16945e-19 0.02" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="1.1656e-24"  ixz="-3.77519e-67" iyy="8.14301e-09" iyz="-6.35893e-50" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_10" type="fixed">
+<origin xyz="-0.125 0.02 -0.04" rpy="1.5708 -8.96831e-43 9.93039e-18" />
+<parent link="hanche_2" />
+<child link="connecteur_13" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_14">
+<visual>
+<origin xyz="-2.22045e-16 0 1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-2.22045e-16 0 1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-2.22045e-16 1.16945e-19 1.08922e-16" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="1.1656e-24"  ixz="-3.77519e-67" iyy="8.14301e-09" iyz="-6.35893e-50" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_14" type="fixed">
+<origin xyz="-0.41 2.77556e-16 -0.095" rpy="1.5708 -8.96831e-43 9.93039e-18" />
+<parent link="hanche_2" />
+<child link="connecteur_14" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="10" type="revolute">
+<origin xyz="-0.5 -1.025 0.025" rpy="-3.14159 -9.89402e-28 0.84364" />
+<parent link="chassis" />
+<child link="hanche_2" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="hanche_3">
+<visual>
+<origin xyz="-0.065 0 0" rpy="3.14159 -2.24208e-44 -3.86093e-17" />
+<geometry>
+<mesh filename="package://hanche.stl"/>
+</geometry>
+<material name="hanche_material">
+<color rgba="0.647059 0.647059 0.647059 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.065 0 0" rpy="3.14159 -2.24208e-44 -3.86093e-17" />
+<geometry>
+<mesh filename="package://hanche.stl"/>
+</geometry>
+<material name="hanche_material">
+<color rgba="0.647059 0.647059 0.647059 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.0375418 9.25507e-18 -0.0164898" rpy="0 0 0"/>
+<mass value="3.6" />
+<inertia ixx="0.00825192" ixy="5.6821e-18"  ixz="-0.0120504" iyy="0.126424" iyz="-1.16966e-18" izz="0.128671" />
+</inertial>
+</link>
+
+<link name="cuisse_3">
+<visual>
+<origin xyz="0 0.2425 -0.03" rpy="-1.5708 4.15529e-17 4.07795e-17" />
+<geometry>
+<mesh filename="package://cuisse.stl"/>
+</geometry>
+<material name="cuisse_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0.2425 -0.03" rpy="-1.5708 4.15529e-17 4.07795e-17" />
+<geometry>
+<mesh filename="package://cuisse.stl"/>
+</geometry>
+<material name="cuisse_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.00641397 0.245927 0.02" rpy="0 0 0"/>
+<mass value="3.6" />
+<inertia ixx="0.0813908" ixy="-0.000199157"  ixz="1.17828e-10" iyy="0.00807931" iyz="-5.77024e-11" izz="0.0746916" />
+</inertial>
+</link>
+
+<link name="tibia_3">
+<visual>
+<origin xyz="-0.375 0 0" rpy="1.5708 -1.01464e-16 0" />
+<geometry>
+<mesh filename="package://tibia.stl"/>
+</geometry>
+<material name="tibia_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.375 0 0" rpy="1.5708 -1.01464e-16 0" />
+<geometry>
+<mesh filename="package://tibia.stl"/>
+</geometry>
+<material name="tibia_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.374888 1.52019e-19 -0.02" rpy="0 0 0"/>
+<mass value="4" />
+<inertia ixx="0.00296427" ixy="2.20574e-17"  ixz="-9.35358e-33" iyy="0.21898" iyz="-6.29527e-31" izz="0.219917" />
+</inertial>
+</link>
+
+<link name="pied_3">
+<visual>
+<origin xyz="0 0.3475 0.07" rpy="1.5708 3.77923e-17 4.45757e-30" />
+<geometry>
+<mesh filename="package://pied.stl"/>
+</geometry>
+<material name="pied_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<!-- Shapes for pied -->
+<collision>
+<origin xyz="0.005 1.0075 0.02" rpy="1.5708 3.77923e-17 4.45757e-30" />
+<geometry>
+<sphere radius="0.0325" />
+</geometry>
+</collision>
+<inertial>
+<origin xyz="0.00674789 0.371096 0.02" rpy="0 0 0"/>
+<mass value="3.65" />
+<inertia ixx="0.27435" ixy="-0.000537481"  ixz="3.18069e-08" iyy="0.00564812" iyz="3.38106e-09" izz="0.270045" />
+</inertial>
+</link>
+
+<link name="vérin_m_7">
+<visual>
+<origin xyz="-0.3275 -0.0355 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_7">
+<visual>
+<origin xyz="5.55112e-17 -0.0355 0.05" rpy="1.5708 6.78013e-17 3.95408e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="5.55112e-17 -0.0355 0.05" rpy="1.5708 6.78013e-17 3.95408e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_15">
+<visual>
+<origin xyz="0 0 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-4.28139e-35 1.16945e-19 5.34107e-17" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="2.98427e-24"  ixz="-3.88842e-24" iyy="8.14301e-09" iyz="4.04174e-24" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_27" type="fixed">
+<origin xyz="0 0 -0.068" rpy="-9.53328e-17 -1.5708 0" />
+<parent link="vérin_f_7" />
+<child link="connecteur_15" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="2v2" type="prismatic">
+<origin xyz="-0.382 5.55112e-17 -1.72085e-15" rpy="1.49938e-14 1.5708 0" />
+<parent link="vérin_m_7" />
+<child link="vérin_f_7" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="27" type="revolute">
+<origin xyz="-2.22045e-16 0.505 0.02" rpy="-1.87422e-14 -4.11511e-14 0.354305" />
+<parent link="pied_3" />
+<child link="vérin_m_7" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="23" type="revolute">
+<origin xyz="-0.75 -1.11022e-16 6.60583e-15" rpy="3.14159 -6.39102e-14 3.14159" />
+<parent link="tibia_3" />
+<child link="pied_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="support_v2_3">
+<visual>
+<origin xyz="1.11022e-16 -0.3475 -0.03" rpy="-1.5708 -8.17462e-17 0" />
+<geometry>
+<mesh filename="package://support_v2.stl"/>
+</geometry>
+<material name="support_v2_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="1.11022e-16 -0.3475 -0.03" rpy="-1.5708 -8.17462e-17 0" />
+<geometry>
+<mesh filename="package://support_v2.stl"/>
+</geometry>
+<material name="support_v2_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.00543544 -0.291712 0.0201529" rpy="0 0 0"/>
+<mass value="3.45" />
+<inertia ixx="0.122164" ixy="0.000142254"  ixz="9.00296e-06" iyy="0.00809203" iyz="1.75617e-05" izz="0.115362" />
+</inertial>
+</link>
+
+<link name="connecteur_16">
+<visual>
+<origin xyz="0 0 -0.02" rpy="-1.5708 -1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 -0.02" rpy="-1.5708 -1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="1.71701e-34 -1.16945e-19 -0.02" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="5.9293e-24"  ixz="-3.80961e-38" iyy="8.14301e-09" iyz="-1.03807e-54" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_21" type="fixed">
+<origin xyz="1.11022e-16 -0.59 1.66533e-16" rpy="3.14159 8.17462e-17 3.14159" />
+<parent link="support_v2_3" />
+<child link="connecteur_16" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_17">
+<visual>
+<origin xyz="0 0 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="1.71701e-34 1.16945e-19 -2.10042e-18" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="5.9293e-24"  ixz="-3.80961e-38" iyy="8.14301e-09" iyz="-1.03807e-54" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_26" type="fixed">
+<origin xyz="0 -0.1975 0.02" rpy="-1.97215e-31 8.17462e-17 3.14159" />
+<parent link="support_v2_3" />
+<child link="connecteur_17" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="24" type="revolute">
+<origin xyz="-0.45 -1.11022e-16 -1.11022e-16" rpy="3.14159 -1.28076e-16 -1.17162e-14" />
+<parent link="tibia_3" />
+<child link="support_v2_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="22" type="revolute">
+<origin xyz="-5.55112e-17 0.49 -1.66533e-16" rpy="3.14159 3.43788e-14 -0.354305" />
+<parent link="cuisse_3" />
+<child link="tibia_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="vérin_m_8">
+<visual>
+<origin xyz="-0.3275 -0.0355 -1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 -1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_8">
+<visual>
+<origin xyz="-1.11022e-16 -0.0355 0.05" rpy="1.5708 -3.06496e-17 4.87647e-18" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-1.11022e-16 -0.0355 0.05" rpy="1.5708 -3.06496e-17 4.87647e-18" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_18">
+<visual>
+<origin xyz="-1.11022e-16 -1.11022e-16 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-1.11022e-16 -1.11022e-16 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-1.11022e-16 -1.10905e-16 -2.10042e-18" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="-4.48906e-24"  ixz="-6.51057e-24" iyy="8.14301e-09" iyz="5.6574e-25" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_25" type="fixed">
+<origin xyz="-1.11022e-16 0 -0.068" rpy="2.40354e-16 1.5708 0" />
+<parent link="vérin_f_8" />
+<child link="connecteur_18" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="2v1" type="prismatic">
+<origin xyz="-0.382 0 -2.22045e-15" rpy="3.14159 -1.5708 0" />
+<parent link="vérin_m_8" />
+<child link="vérin_f_8" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="26" type="revolute">
+<origin xyz="-0.013 0.384 0.02" rpy="6.49779e-15 2.22109e-14 -6.31473e-15" />
+<parent link="cuisse_3" />
+<child link="vérin_m_8" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="21" type="revolute">
+<origin xyz="0.125 -0.02 -0.04" rpy="-1.5708 0.354305 2.35581e-14" />
+<parent link="hanche_3" />
+<child link="cuisse_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="vérin_m_9">
+<visual>
+<origin xyz="-0.3275 -0.0355 -7.80626e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 -7.80626e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_9">
+<visual>
+<origin xyz="0 -0.0355 0.05" rpy="1.5708 2.46519e-32 0" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 -0.0355 0.05" rpy="1.5708 2.46519e-32 0" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_19">
+<visual>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="1.45567e-52 1.16945e-19 -3.65694e-19" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="7.93669e-40"  ixz="9.92086e-41" iyy="8.14301e-09" iyz="-1.60278e-39" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_23" type="fixed">
+<origin xyz="1.47451e-17 1.66533e-16 -0.068" rpy="3.14159 -1.5708 0" />
+<parent link="vérin_f_9" />
+<child link="connecteur_19" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="2v3" type="prismatic">
+<origin xyz="-0.382 -2.22045e-16 6.93889e-18" rpy="-4.34862e-16 1.5708 0" />
+<parent link="vérin_m_9" />
+<child link="vérin_f_9" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="25" type="revolute">
+<origin xyz="0.275 2.44249e-15 0.03" rpy="-1.45421e-16 1.86508e-15 2.44705" />
+<parent link="hanche_3" />
+<child link="vérin_m_9" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="0" upper="0"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_20">
+<visual>
+<origin xyz="-5.55112e-17 0 -0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-5.55112e-17 0 -0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-5.55112e-17 1.16945e-19 -0.02" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="7.09265e-24"  ixz="-1.61772e-67" iyy="8.14301e-09" iyz="-1.46058e-51" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_20" type="fixed">
+<origin xyz="-0.125 -0.02 -0.04" rpy="-1.5708 -6.80466e-28 -3.14159" />
+<parent link="hanche_3" />
+<child link="connecteur_20" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_21">
+<visual>
+<origin xyz="0 0 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.30912e-34 1.16945e-19 5.34107e-17" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="1.35913e-24"  ixz="3.86426e-52" iyy="8.14301e-09" iyz="-1.44368e-51" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_24" type="fixed">
+<origin xyz="-0.41 -2.22045e-16 -0.095" rpy="1.5708 2.34193e-31 3.14159" />
+<parent link="hanche_3" />
+<child link="connecteur_21" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="20" type="revolute">
+<origin xyz="0.5 -0.025 0.025" rpy="-3.14159 -1.75361e-28 -2.26534" />
+<parent link="chassis" />
+<child link="hanche_3" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="hanche_4">
+<visual>
+<origin xyz="-0.065 -5.55112e-17 0" rpy="-3.14159 -0 -2.14057e-17" />
+<geometry>
+<mesh filename="package://hanche.stl"/>
+</geometry>
+<material name="hanche_material">
+<color rgba="0.647059 0.647059 0.647059 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.065 -5.55112e-17 0" rpy="-3.14159 -0 -2.14057e-17" />
+<geometry>
+<mesh filename="package://hanche.stl"/>
+</geometry>
+<material name="hanche_material">
+<color rgba="0.647059 0.647059 0.647059 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.0375418 -4.57837e-17 -0.0164898" rpy="0 0 0"/>
+<mass value="3.6" />
+<inertia ixx="0.00825192" ixy="2.42475e-18"  ixz="-0.0120504" iyy="0.126424" iyz="4.10984e-19" izz="0.128671" />
+</inertial>
+</link>
+
+<link name="cuisse_4">
+<visual>
+<origin xyz="-8.32667e-17 0.2425 -0.03" rpy="-1.5708 8.49088e-17 4.41851e-17" />
+<geometry>
+<mesh filename="package://cuisse.stl"/>
+</geometry>
+<material name="cuisse_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-8.32667e-17 0.2425 -0.03" rpy="-1.5708 8.49088e-17 4.41851e-17" />
+<geometry>
+<mesh filename="package://cuisse.stl"/>
+</geometry>
+<material name="cuisse_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.00641397 0.245927 0.02" rpy="0 0 0"/>
+<mass value="3.6" />
+<inertia ixx="0.0813908" ixy="-0.000199157"  ixz="1.17828e-10" iyy="0.00807931" iyz="-5.77024e-11" izz="0.0746916" />
+</inertial>
+</link>
+
+<link name="tibia_4">
+<visual>
+<origin xyz="-0.375 0 -0.04" rpy="-1.5708 4.28847e-17 8.7037e-31" />
+<geometry>
+<mesh filename="package://tibia.stl"/>
+</geometry>
+<material name="tibia_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.375 0 -0.04" rpy="-1.5708 4.28847e-17 8.7037e-31" />
+<geometry>
+<mesh filename="package://tibia.stl"/>
+</geometry>
+<material name="tibia_material">
+<color rgba="0.917647 0.917647 0.917647 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.374888 -1.52019e-19 -0.02" rpy="0 0 0"/>
+<mass value="4" />
+<inertia ixx="0.00296427" ixy="9.3772e-18"  ixz="1.88748e-31" iyy="0.21898" iyz="-2.12118e-31" izz="0.219917" />
+</inertial>
+</link>
+
+<link name="pied_4">
+<visual>
+<origin xyz="0 0.3475 0.07" rpy="1.5708 -3.19122e-18 1.57772e-30" />
+<geometry>
+<mesh filename="package://pied.stl"/>
+</geometry>
+<material name="pied_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<!-- Shapes for pied -->
+<collision>
+<origin xyz="0.005 1.0075 0.02" rpy="1.5708 -3.19122e-18 1.57772e-30" />
+<geometry>
+<sphere radius="0.0325" />
+</geometry>
+</collision>
+<inertial>
+<origin xyz="0.00674789 0.371096 0.02" rpy="0 0 0"/>
+<mass value="3.65" />
+<inertia ixx="0.27435" ixy="-0.000537481"  ixz="3.18069e-08" iyy="0.00564812" iyz="3.38106e-09" izz="0.270045" />
+</inertial>
+</link>
+
+<link name="vérin_m_10">
+<visual>
+<origin xyz="-0.3275 -0.0355 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_10">
+<visual>
+<origin xyz="0 -0.0355 0.05" rpy="1.5708 4.70619e-17 -9.5419e-18" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 -0.0355 0.05" rpy="1.5708 4.70619e-17 -9.5419e-18" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_22">
+<visual>
+<origin xyz="-1.11022e-16 5.55112e-17 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-1.11022e-16 5.55112e-17 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-1.11022e-16 5.56281e-17 -2.10042e-18" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="-9.79667e-25"  ixz="-1.53412e-25" iyy="8.14301e-09" iyz="-1.42644e-24" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_37" type="fixed">
+<origin xyz="1.66533e-16 5.55112e-17 -0.068" rpy="-2.30428e-16 -1.5708 0" />
+<parent link="vérin_f_10" />
+<child link="connecteur_22" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="3v2" type="prismatic">
+<origin xyz="-0.382 5.55112e-17 5.55112e-17" rpy="-6.86649e-17 1.5708 0" />
+<parent link="vérin_m_10" />
+<child link="vérin_f_10" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="37" type="revolute">
+<origin xyz="0 0.505 0.02" rpy="6.43438e-17 3.37379e-16 0.354305" />
+<parent link="pied_4" />
+<child link="vérin_m_10" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="33" type="revolute">
+<origin xyz="-0.75 -1.11022e-16 -0.04" rpy="6.91417e-17 -2.20668e-17 3.14159" />
+<parent link="tibia_4" />
+<child link="pied_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="support_v2_4">
+<visual>
+<origin xyz="1.11022e-16 -0.3475 -0.03" rpy="-1.5708 -1.41554e-17 -3.15544e-30" />
+<geometry>
+<mesh filename="package://support_v2.stl"/>
+</geometry>
+<material name="support_v2_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="1.11022e-16 -0.3475 -0.03" rpy="-1.5708 -1.41554e-17 -3.15544e-30" />
+<geometry>
+<mesh filename="package://support_v2.stl"/>
+</geometry>
+<material name="support_v2_material">
+<color rgba="0.231373 0.380392 0.705882 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0.00543544 -0.291712 0.0201529" rpy="0 0 0"/>
+<mass value="3.45" />
+<inertia ixx="0.122164" ixy="0.000142254"  ixz="9.00296e-06" iyy="0.00809203" iyz="1.75617e-05" izz="0.115362" />
+</inertial>
+</link>
+
+<link name="connecteur_23">
+<visual>
+<origin xyz="0 -1.38778e-17 0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 -1.38778e-17 0.02" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-2.41046e-34 -1.37608e-17 0.02" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="-9.06486e-24"  ixz="3.80961e-38" iyy="8.14301e-09" iyz="2.56948e-38" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_31" type="fixed">
+<origin xyz="1.11022e-16 -0.59 0.04" rpy="3.14159 7.19322e-16 -3.14159" />
+<parent link="support_v2_4" />
+<child link="connecteur_23" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_24">
+<visual>
+<origin xyz="0 5.55112e-17 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 5.55112e-17 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="2.74524e-35 5.56281e-17 5.34107e-17" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="1.0179e-24"  ixz="3.49214e-38" iyy="8.14301e-09" iyz="2.28874e-37" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_36" type="fixed">
+<origin xyz="1.11022e-16 -0.1975 0.02" rpy="7.88861e-31 1.41554e-17 3.14159" />
+<parent link="support_v2_4" />
+<child link="connecteur_24" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="34" type="revolute">
+<origin xyz="-0.45 0 -0.04" rpy="4.9948e-16 4.48809e-16 -8.19875e-15" />
+<parent link="tibia_4" />
+<child link="support_v2_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="32" type="revolute">
+<origin xyz="1.11022e-16 0.49 0.04" rpy="-7.10909e-17 3.67917e-16 -0.354305" />
+<parent link="cuisse_4" />
+<child link="tibia_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="vérin_m_11">
+<visual>
+<origin xyz="-0.3275 -0.0355 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 0" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_11">
+<visual>
+<origin xyz="5.55112e-17 -0.0355 0.05" rpy="1.5708 -3.41705e-17 2.90006e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="5.55112e-17 -0.0355 0.05" rpy="1.5708 -3.41705e-17 2.90006e-17" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_25">
+<visual>
+<origin xyz="-1.11022e-16 0 1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-1.11022e-16 0 1.11022e-16" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-1.11022e-16 1.16945e-19 1.08922e-16" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="1.80685e-24"  ixz="-6.89574e-26" iyy="8.14301e-09" iyz="-1.4104e-24" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_35" type="fixed">
+<origin xyz="5.55112e-17 0 -0.068" rpy="2.077e-16 1.5708 0" />
+<parent link="vérin_f_11" />
+<child link="connecteur_25" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="3v1" type="prismatic">
+<origin xyz="-0.382 0 0" rpy="3.11643e-16 1.5708 0" />
+<parent link="vérin_m_11" />
+<child link="vérin_f_11" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="36" type="revolute">
+<origin xyz="-0.013 0.384 0.02" rpy="3.14159 2.50574e-16 -3.40945e-16" />
+<parent link="cuisse_4" />
+<child link="vérin_m_11" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="31" type="revolute">
+<origin xyz="0.125 -0.02 -0.04" rpy="-1.5708 0.354305 1.35977e-16" />
+<parent link="hanche_4" />
+<child link="cuisse_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="vérin_m_12">
+<visual>
+<origin xyz="-0.3275 -0.0355 -6.93889e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-0.3275 -0.0355 -6.93889e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://vérin_m.stl"/>
+</geometry>
+<material name="vérin_m_material">
+<color rgba="0.972549 0.529412 0.00392157 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-0.18637 4.92938e-09 -4.07398e-10" rpy="0 0 0"/>
+<mass value="2.75" />
+<inertia ixx="0.0336893" ixy="4.35091e-11"  ixz="1.55211e-09" iyy="0.0336913" iyz="2.48885e-10" izz="0.000282174" />
+</inertial>
+</link>
+
+<link name="vérin_f_12">
+<visual>
+<origin xyz="0 -0.0355 0.05" rpy="1.5708 9.76532e-34 -3.10552e-33" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 -0.0355 0.05" rpy="1.5708 9.76532e-34 -3.10552e-33" />
+<geometry>
+<mesh filename="package://vérin_f.stl"/>
+</geometry>
+<material name="vérin_f_material">
+<color rgba="0.768627 0.886275 0.952941 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.32076e-10 -0.0342983 0.0718149" rpy="0 0 0"/>
+<mass value="2.7502" />
+<inertia ixx="0.0310777" ixy="3.32787e-12"  ixz="-9.81618e-11" iyy="0.0276458" iyz="-0.0021373" izz="0.00533295" />
+</inertial>
+</link>
+
+<link name="connecteur_26">
+<visual>
+<origin xyz="0 2.77556e-17 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 2.77556e-17 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="3.21466e-51 2.78725e-17 -3.65694e-19" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="1.82828e-40"  ixz="4.1702e-39" iyy="8.14301e-09" iyz="3.58224e-39" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_33" type="fixed">
+<origin xyz="1.04083e-17 -3.88578e-16 -0.068" rpy="2.36511e-16 1.5708 0" />
+<parent link="vérin_f_12" />
+<child link="connecteur_26" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="3v3" type="prismatic">
+<origin xyz="-0.382 2.77556e-16 5.20417e-18" rpy="1.73223e-16 1.5708 0" />
+<parent link="vérin_m_12" />
+<child link="vérin_f_12" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="-0.2045" upper="-0.0045"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="35" type="revolute">
+<origin xyz="0.275 0 0.014" rpy="-1.11473e-16 -1.06957e-16 2.56064" />
+<parent link="hanche_4" />
+<child link="vérin_m_12" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" lower="0" upper="0"/>
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_27">
+<visual>
+<origin xyz="-1.11022e-16 0 -0.02" rpy="-1.5708 -1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-1.11022e-16 0 -0.02" rpy="-1.5708 -1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-1.11022e-16 -1.16945e-19 -0.02" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="-8.41022e-25"  ixz="3.74453e-51" iyy="8.14301e-09" iyz="0" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_30" type="fixed">
+<origin xyz="-0.125 -0.02 -0.04" rpy="-1.5708 -2.08062e-29 -3.14159" />
+<parent link="hanche_4" />
+<child link="connecteur_27" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_28">
+<visual>
+<origin xyz="-1.11022e-16 0 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="-1.11022e-16 0 5.55112e-17" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="-1.11022e-16 1.16945e-19 5.34107e-17" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="-8.41022e-25"  ixz="3.74453e-51" iyy="8.14301e-09" iyz="0" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_34" type="fixed">
+<origin xyz="-0.41 -5.55112e-17 -0.095" rpy="1.5708 -2.08062e-29 -3.14159" />
+<parent link="hanche_4" />
+<child link="connecteur_28" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<joint name="30" type="revolute">
+<origin xyz="-0.5 -0.025 0.025" rpy="3.14159 -9.82822e-28 -0.580955" />
+<parent link="chassis" />
+<child link="hanche_4" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_29">
+<visual>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 1.16945e-19 -3.65694e-19" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="0"  ixz="0" iyy="8.14301e-09" iyz="0" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_02" type="fixed">
+<origin xyz="-0.19 -0.965 1.07553e-16" rpy="0 -0 -1.5708" />
+<parent link="chassis" />
+<child link="connecteur_29" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_30">
+<visual>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 1.16945e-19 -3.65694e-19" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="0"  ixz="0" iyy="8.14301e-09" iyz="0" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_12" type="fixed">
+<origin xyz="-0.44 -0.335 1.09288e-16" rpy="0 -0 -1.5708" />
+<parent link="chassis" />
+<child link="connecteur_30" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_31">
+<visual>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 1.16945e-19 -3.65694e-19" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="0"  ixz="0" iyy="8.14301e-09" iyz="0" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_22" type="fixed">
+<origin xyz="0.44 -0.715 1.09288e-16" rpy="0 -0 -1.5708" />
+<parent link="chassis" />
+<child link="connecteur_31" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+<link name="connecteur_32">
+<visual>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</visual>
+<collision>
+<origin xyz="0 0 1.73472e-18" rpy="1.5708 1.5708 0" />
+<geometry>
+<mesh filename="package://connecteur.stl"/>
+</geometry>
+<material name="connecteur_material">
+<color rgba="0.498039 0.498039 0.498039 1.0"/>
+</material>
+</collision>
+<inertial>
+<origin xyz="0 1.16945e-19 -3.65694e-19" rpy="0 0 0"/>
+<mass value="0.000452389" />
+<inertia ixx="6.43901e-08" ixy="0"  ixz="0" iyy="8.14301e-09" iyz="0" izz="6.43901e-08" />
+</inertial>
+</link>
+
+<joint name="co_32" type="fixed">
+<origin xyz="0.19 -0.085 1.09288e-16" rpy="0 -0 -1.5708" />
+<parent link="chassis" />
+<child link="connecteur_32" />
+<axis xyz="0 0 1"/>
+<limit effort="1" velocity="20" />
+<joint_properties friction="0.0"/>
+</joint>
+
+
+</robot>

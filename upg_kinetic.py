@@ -28,6 +28,7 @@ def init(n=100, passenger=True, passenger_weight=80):
 
     # Mise à jour de ROBOT
     set_verins_12(V0)
+    set_idle_pos(V0)
     pos_abs = [1100., 1100., 0.,
                1100., -1100., 0.,
                -1100., 1100., 0.,

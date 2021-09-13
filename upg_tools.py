@@ -1,8 +1,8 @@
 # L'ensemble des distances sont exprimées en mm : segments de patte et élongations des vérins
 
 import numpy as np
-from qpsolvers import solve_qp
 from kinetic import get_leg_points_V1_V2
+from qpsolvers import solve_qp
 
 FL = 0  # front left leg
 FR = 1  # front right leg
@@ -60,10 +60,19 @@ ROBOT = {'legs': {FL: {'origin': (-0.5, 0.5, 0),
                   'omega': {'l': 0, 'm': 0, 'n': 0},
                   'com': [0, 0, 0]},
 
-         'idle_pos': {'verins': [535, 615, 520]}}
+         'idle_pos': []}
 
 
 ######################### ACCES AU ROBOT ##########################
+
+def get_idle_pos():
+    return ROBOT['idle_pos']
+
+
+def set_idle_pos(V):
+    global ROBOT
+    ROBOT['idle_pos'] = V
+
 
 def get_verins_3(leg_id):
     """
@@ -87,7 +96,6 @@ def set_verins_3(v1, v2, v3, leg_id):
     ROBOT['legs'][leg_id]['verins'][0] = v1
     ROBOT['legs'][leg_id]['verins'][1] = v2
     ROBOT['legs'][leg_id]['verins'][2] = v3
-    return
 
 
 def get_verins_12():
@@ -326,6 +334,26 @@ def d2_to_d3(X, Z, calpha):
 
 ############################ GENERAL ##############################
 
+def inertial_mat_cyl(mass, radius, height):
+    """
+    Retourne les valeurs diagonales de la matrice d'inertie d'un cylindre d'axe de révolution z
+    :return: xx, yy, zz
+    """
+    return mass * (radius ** 2 / 4 + (height ** 2 / 12)), \
+           mass * (radius ** 2 / 4 + (height ** 2 / 12)), \
+           mass * (radius ** 2 / 2)
+
+
+def inertial_mat_para(mass, length, depth, height):
+    """
+    Retourne les valeurs diagonales de la matrice d'inertir d'un parallélépipède de longueur selon x, de
+    profondeur selon y et de hauteur selon z
+    :return: xx, yy, zz
+    """
+    return mass * (depth ** 2 + height ** 2) / 12, \
+           mass * (length ** 2 + height ** 2) / 12, \
+           mass * (length ** 2 + depth ** 2) / 12
+
 def get_endpoint(leg_id, center, r):
     """
     Détermine l'écart en x et y par rapport au centre du point objectif du com au cours du mouvement de la jambe leg_id
@@ -343,6 +371,7 @@ def get_endpoint(leg_id, center, r):
     y = r * (l[1] - center[1]) / dist_center_l
     return x, y
 
+
 def intersection_legs():
     """
     Retourne le point d'intersection des diagonales du quadrilatère formé par le projeté des 4 pattes au sol.
@@ -353,14 +382,15 @@ def intersection_legs():
     l2 = get_leg_pos(2)
     l3 = get_leg_pos(3)
     # On détermine les équations des droites passant par les pattes
-    a1 = (l3[1] - l0[1])/ (l3[0] - l0[0])
-    a2 = (l1[1] - l2[1])/ (l1[0] - l2[0])
+    a1 = (l3[1] - l0[1]) / (l3[0] - l0[0])
+    a2 = (l1[1] - l2[1]) / (l1[0] - l2[0])
     b1 = l0[1] - a1 * l0[0]
     b2 = l1[1] - a2 * l1[0]
     # On calcule leur intersection
-    x = (b2 - b1)/(a1 - a2)
+    x = (b2 - b1) / (a1 - a2)
     y = a1 * x + b1
     return x, y
+
 
 def reduce_to(V, n):
     """
