@@ -1,6 +1,11 @@
-# L'ensemble des distances sont exprimées en mm : segments de patte et élongations des vérins
-
 from upg_tools import *
+
+'''
+
+   L'ensemble des calculs associés à l'élaboration des jacobiennes sont
+               explicités dans le fichier kinematic.pdf
+               
+'''
 
 
 ################# CINEMATIQUE 2D DANS LE REF DE LA PATTE #################
@@ -61,7 +66,7 @@ def gen_MI(pts, lpl, v1, v2):
 
 def gen_MJ(pts, lpl, v1, v2):
     """
-    Retourne la jacobienne correspondant au modèle cinématique np.linalg.inverse dans le plan de la patte
+    Retourne la jacobienne correspondant au modèle cinématique direct dans le plan de la patte
     Prend en argument la position des points de la patte et l'élongation des verrins en m
     La jacobienne doit être appliqué sur des élongations en m et retourne des position en m
 
@@ -82,7 +87,7 @@ def gen_MJ(pts, lpl, v1, v2):
 def mat_A(J, lpl, v3, alpha):
     """
     Fonction auxiliaire de gen_jacob_3
-    Génère la matrice A conformément à nos équations (cf. indirect.pdf)
+    Génère la matrice A conformément à nos équations (cf. kinematic.pdf)
     Toutes les longueurs en m
     """
 
@@ -102,7 +107,7 @@ def mat_A(J, lpl, v3, alpha):
 def mat_B(X, alpha):
     """
     Fonction auxiliaire de gen_jacob_3
-    Génère la matrice B conformément à nos équations (cf. indirect.pdf)
+    Génère la matrice B conformément à nos équations (cf. kinematic.pdf)
     Toutes les longueurs en m
     """
     B = np.array([
@@ -115,7 +120,7 @@ def mat_B(X, alpha):
 
 def gen_jacob_3(v1, v2, v3, alpha, lpl):
     """
-    Retourne la jacobienne correspondant au modèle cinématique np.linalg.inverse dans le repère cartésien centré en O
+    Retourne la jacobienne correspondant au modèle cinématique direct dans le repère cartésien de la patte
     Prend en argument l'élongation des verrins en m et l'angle alpha en radian
     La jacobienne doit être appliquée sur des élongations en m et retourne des position en m
     """
@@ -130,6 +135,11 @@ def gen_jacob_3(v1, v2, v3, alpha, lpl):
 #################### CINEMATIQUE DANS LE REF DU ROBOT ####################
 
 def gen_jacob_12(V):
+    """
+    Retourne la jacobienne correspondant au modèle cinématique direct dans le repère cartésien du robot
+    Prend en argument l'élongation des verrins en mm et l'angle alpha en radian
+    La jacobienne doit être appliquée sur des élongations en mm et retourne des position en mm
+    """
     J = []
     for i in range(4):
         # Calcul de la jacobienne de la patte
@@ -145,6 +155,10 @@ def gen_jacob_12(V):
 
 
 def jacob_dX_to_dV_dO_dOmega(V, Omega, X_rel):
+    """
+    Retourne la jacobienne associée à l'équation dX = J @ [dV, dO, dOmega]
+    La jacobienne doit être appliquée sur des élongations en mm et retourne des position en mm
+    """
     dRdl = gen_dRdl(Omega[0], Omega[1], Omega[2])
     dRdm = gen_dRdm(Omega[0], Omega[1], Omega[2])
     dRdn = gen_dRdn(Omega[0], Omega[1], Omega[2])
@@ -175,6 +189,10 @@ def jacob_dX_to_dV_dO_dOmega(V, Omega, X_rel):
 
 
 def jacob_dPf_dO_dOmega_to_dV_dPg_dO_dOmega(leg_id, V, Omega, X_rel):
+    """
+    Retourne la jacobienne associée à l'équation [dPf, dO, dOmega] = J @ [dV, dPg, dO, dOmega]
+    La jacobienne doit être appliquée sur des élongations en mm et retourne des position en mm
+    """
     v = []
     Pf = np.zeros((3, 1))
     for j in range(3):
@@ -199,177 +217,3 @@ def jacob_dPf_dO_dOmega_to_dV_dPg_dO_dOmega(leg_id, V, Omega, X_rel):
     JO = np.concatenate((np.zeros((3, 21)), np.eye(3), np.zeros((3, 3))), axis=1)
     JOmega = np.concatenate((np.zeros((3, 24)), np.eye(3)), axis=1)
     return np.concatenate((JPf, JO, JOmega))
-
-# def gen_jacob_12x18(V, R, dRdl, dRdm, dRdn, X):
-#     J_l = np.block([[dRdl, np.zeros((3, 9))],
-#                     [np.zeros((3, 3)), dRdl, np.zeros((3, 6))],
-#                     [np.zeros((3, 6)), dRdl, np.zeros((3, 3))],
-#                     [np.zeros((3, 9)), dRdl]]) @ X
-#     J_m = np.block([[dRdm, np.zeros((3, 9))],
-#                     [np.zeros((3, 3)), dRdm, np.zeros((3, 6))],
-#                     [np.zeros((3, 6)), dRdm, np.zeros((3, 3))],
-#                     [np.zeros((3, 9)), dRdm]]) @ X
-#     J_n = np.block([[dRdn, np.zeros((3, 9))],
-#                     [np.zeros((3, 3)), dRdn, np.zeros((3, 6))],
-#                     [np.zeros((3, 6)), dRdn, np.zeros((3, 3))],
-#                     [np.zeros((3, 9)), dRdn]]) @ X
-#     J_Omega = np.concatenate((-J_l.reshape((12, 1)), -J_m.reshape((12, 1)), -J_n.reshape((12, 1))), axis=1)
-#
-#     J_O = np.concatenate((-np.eye(3), -np.eye(3), -np.eye(3), -np.eye(3)))
-#
-#     M = np.concatenate((np.eye(12), J_Omega, J_O), axis=1)
-#
-#     J_12 = gen_jacob_12(V)
-#
-#     Big_np.linalg.inv_R = np.block([[R.T, np.zeros((3, 9))],
-#                           [np.zeros((3, 3)), R.T, np.zeros((3, 6))],
-#                           [np.zeros((3, 6)), R.T, np.zeros((3, 3))],
-#                           [np.zeros((3, 9)), R.T]])
-#
-#     return J_12 @ Big_np.linalg.inv_R @ M
-#
-#
-# ######################### 1 ########################
-#
-# def legs_constraints():
-#     C = np.zeros((12, 18))
-#     for i in range(4):
-#         if get_og(i):
-#             for j in range(3):
-#                 C[i * 3 + j][i * 3 + j] = 1
-#     return C
-#
-# def gen_jacob_24x18(V, X, l, m, n):
-#     """
-#     A voir
-#     """
-#     R = gen_R(l, m, n)
-#     dRdl = gen_dRdl(l, m, n)
-#     dRdm = gen_dRdm(l, m, n)
-#     dRdn = gen_dRdn(l, m, n)
-#     J_12x18 = gen_jacob_12x18(V, R, dRdl, dRdm, dRdn, X)
-#     Legs_constraints = legs_constraints()
-#     return np.concatenate((J_12x18, Legs_constraints))
-#
-# def gen_jacob(V, X, l, m, n):
-#     J_24x18 = gen_jacob_24x18(V, X, l, m, n)
-#     J_24x15 = J_24x18[0:24, 0:15]
-#     J_O = J_24x18[0:24, 15:18]
-#     return pseudo_inv(J_O) @ np.concatenate((-J_24x15, np.eye(24)), axis=1)
-#
-# ######################### 2 ########################
-#
-# def legs_constraints_2():
-#     """
-#     3 pattes au sol
-#     """
-#     C = np.zeros((3, 18))
-#     l = 0
-#     for i in range(4):
-#         if l == 3: break
-#         if get_og(i):
-#             C[l][i * 3 + 2] = 1
-#             l += 1
-#     return C
-#
-# def gen_jacob_15x18(V, X, l, m, n):
-#     """
-#     A voir
-#     """
-#     R = gen_R(l, m, n)
-#     dRdl = gen_dRdl(l, m, n)
-#     dRdm = gen_dRdm(l, m, n)
-#     dRdn = gen_dRdn(l, m, n)
-#     J_12x18 = gen_jacob_12x18(V, R, dRdl, dRdm, dRdn, X)
-#     Legs_constraints = legs_constraints_2()
-#     return np.concatenate((J_12x18, Legs_constraints))
-#
-# def gen_jacob_alt(V, X, l, m, n):
-#     J_15x18 = gen_jacob_15x18(V, X, l, m, n)
-#     J_15x15 = J_15x18[0:15, 0:15]
-#     J_O = J_15x18[0:15, 15:18]
-#     return pseudo_inv(J_O) @ np.concatenate((-J_15x15, np.eye(15)), axis=1)
-#
-# #####################################################################################
-#
-# def gen_VAR(V, Omega, X_rel):
-#     dRdl = gen_dRdl(Omega[0], Omega[1], Omega[2])
-#     dRdm = gen_dRdm(Omega[0], Omega[1], Omega[2])
-#     dRdn = gen_dRdn(Omega[0], Omega[1], Omega[2])
-#     J_l = np.block([[dRdl, np.zeros((3, 9))],
-#                     [np.zeros((3, 3)), dRdl, np.zeros((3, 6))],
-#                     [np.zeros((3, 6)), dRdl, np.zeros((3, 3))],
-#                     [np.zeros((3, 9)), dRdl]]) @ X_rel
-#     J_m = np.block([[dRdm, np.zeros((3, 9))],
-#                     [np.zeros((3, 3)), dRdm, np.zeros((3, 6))],
-#                     [np.zeros((3, 6)), dRdm, np.zeros((3, 3))],
-#                     [np.zeros((3, 9)), dRdm]]) @ X_rel
-#     J_n = np.block([[dRdn, np.zeros((3, 9))],
-#                     [np.zeros((3, 3)), dRdn, np.zeros((3, 6))],
-#                     [np.zeros((3, 6)), dRdn, np.zeros((3, 3))],
-#                     [np.zeros((3, 9)), dRdn]]) @ X_rel
-#
-#     J_12 = gen_jacob_12(V)
-#     R = gen_R(Omega[0], Omega[1], Omega[2])
-#     Big_R = np.block([[R, np.zeros((3, 9))],
-#                           [np.zeros((3, 3)), R, np.zeros((3, 6))],
-#                           [np.zeros((3, 6)), R, np.zeros((3, 3))],
-#                           [np.zeros((3, 9)), R]])
-#     old_VAR = np.concatenate((np.concatenate((Big_R @ np.linalg.inv(J_12), J_l.reshape((12, 1)), J_m.reshape((12, 1)), J_n.reshape((12, 1))), axis=1), np.zeros((3,15))))
-#     return np.concatenate((old_VAR, np.concatenate((np.zeros((12, 3)), np.eye(3)))), axis=1)
-#
-# def legs_constraints_3():
-#     """
-#     3 pattes au sol
-#     """
-#     C = np.zeros((3, 15))
-#     l = 0
-#     for i in range(4):
-#         if l == 3: break
-#         if get_og(i):
-#             C[l][i * 3 + 2] = 1
-#             l += 1
-#     return C
-#
-# def legs_constraints_4():
-#     """
-#     1 patte au sol
-#     """
-#     C = np.zeros((3, 15))
-#     for i in range(4):
-#         if get_og(i):
-#             C[0][i * 3] = 1
-#             C[1][i * 3 + 1] = 1
-#             C[2][i * 3 + 2] = 1
-#             break
-#     return C
-#
-# def legs_constraints_5():
-#     """
-#     3 pattes fixes
-#     """
-#     C = np.zeros((9, 15))
-#     c = 0
-#     for i in range(4):
-#         if get_og(i):
-#             c += 1
-#             C[3 * i][i * 3] = 1
-#             C[3 * i + 1][i * 3 + 1] = 1
-#             C[3 * i + 2][i * 3 + 2] = 1
-#         if c == 3: break
-#     return C
-#
-# def gen_OBJ():
-#     return np.concatenate((np.concatenate((np.eye(12), - np.concatenate((np.eye(3), np.eye(3), np.eye(3), np.eye(3)))), axis=1), legs_constraints_4()))
-#
-# def gen_weights_regu(V_weights=0.1):
-#     W = np.zeros((18, 18))
-#     for i in range(12):
-#         W[i][i] = V_weights
-#     return W
-#
-# def gen_new_jacob(V, Omega, X_rel):
-#     return pseudo_inv(gen_OBJ()) @ gen_VAR(V, Omega, X_rel)
-#
-
-#####################################################

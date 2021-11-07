@@ -1,7 +1,7 @@
 # L'ensemble des distances sont exprimées en mm : segments de patte et élongations des vérins
 
 import kinetic as kin
-from upg_kinetic import *
+from upg_kinematic import *
 
 x_A = - kin.LEGS[kin.FL]['lengths']['ao']
 y_A = 0

@@ -1,7 +1,7 @@
 import numpy as np
 
 from upg_tools import *
-from upg_kinetic import *
+from upg_kinematic import *
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 

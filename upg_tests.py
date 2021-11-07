@@ -79,6 +79,8 @@ def draw_abs(LV, LO, LOmega, V=False, com=False, center=False, passenger_weight=
 
         ax.scatter([com[0] for com in Lcom], [com[1] for com in Lcom], np.zeros(len(Lcom)),
                    label='COM', marker='.', s=3, c='black')
+        ax.scatter([Lcom[0][0]], [Lcom[0][1]], [0], label='COM', marker='.', s=10, c='red')
+        ax.scatter([Lcom[-1][0]], [Lcom[-1][1]], [0], label='COM', marker='.', s=10, c='green')
 
         legs_on_ground = []
         for i in range(4):
@@ -93,7 +95,7 @@ def draw_abs(LV, LO, LOmega, V=False, com=False, center=False, passenger_weight=
                 tri_Y.append(TS[i][1])
         tri_X.append(TS[0][0])
         tri_Y.append(TS[0][1])
-        ax.plot(tri_X, tri_Y, tri_Z, label='Triangle de sustentation', c='red')
+        # ax.plot(tri_X, tri_Y, tri_Z, label='Triangle de sustentation', c='red')
         diagX = [[get_leg_pos(0)[0], get_leg_pos(3)[0], get_leg_pos(0)[0]],
                  [get_leg_pos(2)[0], get_leg_pos(1)[0], get_leg_pos(2)[0]]]
         diagY = [[get_leg_pos(0)[1], get_leg_pos(3)[1], get_leg_pos(0)[1]],
@@ -107,7 +109,7 @@ def draw_abs(LV, LO, LOmega, V=False, com=False, center=False, passenger_weight=
                    label='O', marker='.', s=3, c='red')
 
 
-    plt.title("Trajectoire du bout de la patte dans l'espace")
+    # plt.title("Trajectoire du bout de la patte dans l'espace")
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
@@ -330,27 +332,29 @@ def test_get_last_leg():
     print(get_last_leg(0))
 
 
-def test_compute_traj(d, r):
-    if d == (0, 0) and r == 0:
-        return
+def test_compute_traj(d, r, max_steps=40):
+    # if d == (0, 0) and r == 0:
+    #     return
     init()
-    traj = compute_traj_form_joystick_abs_equal_dist(cmd_joystick(d, r))
+    cmd = cmd_joystick(d, r)
+    print(cmd)
+    traj = compute_traj_form_joystick_abs_equal_dist(cmd, max_steps=max_steps)
     # print(traj[0])
     V = get_verins_12()
 
     # Trajectoires
     Xt0 = [p[0] for p in traj[0]]
     Yt0 = [p[1] for p in traj[0]]
-    Zt0 = [p[2] for p in traj[0]]
+    Zt0 = [0 for p in traj[0]]
     Xt1 = [p[0] for p in traj[1]]
     Yt1 = [p[1] for p in traj[1]]
-    Zt1 = [p[2] for p in traj[1]]
+    Zt1 = [0 for p in traj[1]]
     Xt2 = [p[0] for p in traj[2]]
     Yt2 = [p[1] for p in traj[2]]
-    Zt2 = [p[2] for p in traj[2]]
+    Zt2 = [0 for p in traj[2]]
     Xt3 = [p[0] for p in traj[3]]
     Yt3 = [p[1] for p in traj[3]]
-    Zt3 = [p[2] for p in traj[3]]
+    Zt3 = [0 for p in traj[3]]
 
     # Tracé des trajectoires
     fig = plt.figure()
@@ -359,7 +363,7 @@ def test_compute_traj(d, r):
     ax.scatter(Xt1, Yt1, Zt1, label='Théorique', c='cyan')  # Tracé de la courbe théorique
     ax.scatter(Xt2, Yt2, Zt2, label='Théorique', c='deeppink')  # Tracé de la courbe théorique
     ax.scatter(Xt3, Yt3, Zt3, label='Théorique', c='chartreuse')  # Tracé de la courbe théorique
-    plt.title("Trajectoire du bout de la patte dans l'espace")
+    # plt.title("Trajectoire du bout de la patte dans l'espace")
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
@@ -373,7 +377,7 @@ def test_compute_traj(d, r):
     ax.set_ybound(-2000, 2000)
     ax.set_zbound(-500, 1500)
     for leg in range(4):
-        ax.scatter(traj[leg][0][0], traj[leg][0][1], traj[leg][0][2], c='black', s=60)
+        ax.scatter(traj[leg][0][0], traj[leg][0][1], [0 for p in traj[leg]], c='black', s=60)
     ax.set_xbound(-2000, 2000)
     ax.set_ybound(-2000, 2000)
     ax.set_zbound(2000, -2000)
@@ -447,21 +451,55 @@ if __name__ == '__main__':
 
     t_compute_traj = 0
     if t_compute_traj:
-        test_compute_traj((1, 0), 0)
-        test_compute_traj((-1, 0), 0)
-        test_compute_traj((1, 1), 0)
-        test_compute_traj((1, 0), 1)
-        test_compute_traj((0, 0), -1)
-        test_compute_traj((np.sqrt(3)/2, 1/2), 1)
+        # test_compute_traj((1, 0), 0)
+        # test_compute_traj((0, 1), 0)
+        # test_compute_traj((-1, 0), 0)
+        # test_compute_traj((0, -1), 0)
+        test_compute_traj((0, 0), 1, max_steps=50)
+        # test_compute_traj((0, 0), -1)
+        # test_compute_traj((np.sqrt(3)/2, 1/2), 1, max_steps=100)
 
     t_compute_step = 0
     if t_compute_step:
         test_compute_step((1, 0), 1)
 
+    t_walk = 0
+    if t_walk:
+        init()
+        # LV, LO, LOmega = simple_walk(((0, 0), 1), nb_steps=10, debug=True)
+        # draw_abs(LV, LO, LOmega)
+
+        height = 200
+        com_radius = 200
+        passenger_weight = 0
+        nb_steps = 20
+        joystick = (0, 0), 1
+
+        for j in range(4):
+            if j == 0:
+                l = 0
+            elif j == 1:
+                l = 2
+            elif j == 2:
+                l = 3
+            else:
+                l = 1
+
+            traj_up = compute_traj_up(get_leg_pos(l), height)
+            traj_mvt = compute_traj_from_com(joystick, traj_up[-1], nb_steps)
+            traj_down = compute_traj_down(traj_mvt[-1])
+
+            LV, LO, LOmega = move_abs_leg_autocom(traj_up + traj_mvt + traj_down, l, com_radius=com_radius,
+                                                  passenger_weight=passenger_weight, const_omega=True)
+            draw_abs(LV, LO, LOmega, com=True, leg_on_air=l, passenger_weight=passenger_weight)
+            print("END ", l)
+
     t_move_com = 1
     if t_move_com:
         init()
-        LV, LO, LOmega = init_com(nb_steps=20)
+        radius = 200
+
+        LV, LO, LOmega = init_com(radius=radius, nb_steps=20)
         draw_abs(LV, LO, LOmega, com=True, center=True)
 
         # print(gen_com_traj(0, 2)) # == +- (0, -150)
@@ -469,19 +507,19 @@ if __name__ == '__main__':
 
         nb_steps = 30
         traj_leg = traj_abs_sin_1(nb_steps, 200, 0)
-        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 0, com_radius=200)
+        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 0, com_radius=radius)
         draw_abs(LV, LO, LOmega, com=True)
 
         traj_leg = traj_abs_sin_1(nb_steps, 200, 2)
-        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 2, com_radius=200)
+        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 2, com_radius=radius)
         draw_abs(LV, LO, LOmega, com=True)
 
         traj_leg = traj_abs_sin_1(nb_steps, 200, 3)
-        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 3, com_radius=200)
+        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 3, com_radius=radius)
         draw_abs(LV, LO, LOmega, com=True)
 
-        traj_leg = traj_abs_sin_1(nb_steps, 200, 1)
-        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 1, com_radius=200)
+        traj_leg = traj_abs_sin_1(nb_steps, 400, 1)
+        LV, LO, LOmega = move_abs_leg_autocom(traj_leg, 1, com_radius=radius)
         draw_abs(LV, LO, LOmega, com=True)
 
         # init()

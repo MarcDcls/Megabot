@@ -1,4 +1,3 @@
-# L'ensemble des distances sont exprimées en mm : segments de patte et élongations des vérins
 import numpy as np
 
 from upg_jacobian import *
@@ -665,12 +664,6 @@ def min_diff(square=True):
             best_leg = i
             max_diff = current_diff
     return best_leg
-
-
-def traj_rota():
-    leg_ig = min_diff()
-    x, y, z = direct_rel_3(ROBOT['legs'][leg_ig]['verrins'][0], ROBOT['legs'][leg_ig]['verrins'][1],
-                           ROBOT['legs'][leg_ig]['verrins'][2], leg_ig)
 
 
 ############################################################################

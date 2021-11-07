@@ -10,10 +10,14 @@ RL = 2  # rear left leg
 RR = 3  # rear right leg
 
 ROBOT = {'legs': {FL: {'origin': (-0.5, 0.5, 0),
-                       'lengths': {'ao': 135.0, 'bo': 120.0, 'bcx': 290.0, 'bcy': 60.0,
-                                   'ae': 500.0, 'de': 100.0, 'ef': 450.0, 'fg': 300.0,
-                                   'fh': 200.0, 'gi': 520.0, 'bf': 600.0, 'gj': 1055.0,
-                                   'yaw_a': 700.0, 'yaw_b': 50.0, 'yaw_c': 280.0},
+                       # 'lengths': {'ao': 135.0, 'bo': 120.0, 'bcx': 290.0, 'bcy': 60.0,
+                       #             'ae': 500.0, 'de': 100.0, 'ef': 450.0, 'fg': 300.0,
+                       #             'fh': 200.0, 'gi': 520.0, 'bf': 600.0, 'gj': 1055.0,
+                       #             'yaw_a': 700.0, 'yaw_b': 50.0, 'yaw_c': 280.0},
+                       'lengths': {'ao': 125.0, 'bo': 125.0, 'bcx': 287.5, 'bcy': 55.0,
+                                   'ae': 490.0, 'de': 106.0, 'ef': 450.0, 'fg': 300.0,
+                                   'fh': 197.0, 'gi': 505.0, 'bf': 590.0, 'gj': 1040.0,
+                                   'yaw_a': 689.5, 'yaw_b': 60.0, 'yaw_c': 275.0},
                        'verins': [535, 615, 520],
                        'matrix': np.array([[1, 0, 0],
                                            [0, 1, 0],
@@ -21,10 +25,14 @@ ROBOT = {'legs': {FL: {'origin': (-0.5, 0.5, 0),
                        'og': 1,
                        'pos_abs': np.array([0.0, 0.0, 0.0])},
                   FR: {'origin': (0.5, 0.5, 0),
-                       'lengths': {'ao': 130.0, 'bo': 120.0, 'bcx': 300.0, 'bcy': 60.0,
-                                   'ae': 500.0, 'de': 100.0, 'ef': 445.0, 'fg': 285.0,
-                                   'fh': 200.0, 'gi': 500.0, 'bf': 603.0, 'gj': 1035.0,
-                                   'yaw_a': 700.0, 'yaw_b': 55.0, 'yaw_c': 280.0},
+                       # 'lengths': {'ao': 130.0, 'bo': 120.0, 'bcx': 300.0, 'bcy': 60.0,
+                       #             'ae': 500.0, 'de': 100.0, 'ef': 445.0, 'fg': 285.0,
+                       #             'fh': 200.0, 'gi': 500.0, 'bf': 603.0, 'gj': 1035.0,
+                       #             'yaw_a': 700.0, 'yaw_b': 55.0, 'yaw_c': 280.0},
+                       'lengths': {'ao': 125.0, 'bo': 125.0, 'bcx': 287.5, 'bcy': 55.0,
+                                   'ae': 490.0, 'de': 106.0, 'ef': 450.0, 'fg': 300.0,
+                                   'fh': 197.0, 'gi': 505.0, 'bf': 590.0, 'gj': 1040.0,
+                                   'yaw_a': 689.5, 'yaw_b': 60.0, 'yaw_c': 275.0},
                        'verins': [535, 615, 520],
                        'matrix': np.array([[0, -1, 0],
                                            [1, 0, 0],
@@ -32,10 +40,14 @@ ROBOT = {'legs': {FL: {'origin': (-0.5, 0.5, 0),
                        'og': 1,
                        'pos_abs': np.array([0.0, 0.0, 0.0])},
                   RL: {'origin': (-0.5, -0.5, 0),
-                       'lengths': {'ao': 130.0, 'bo': 120.0, 'bcx': 295.0, 'bcy': 60.0,
-                                   'ae': 495.0, 'de': 100.0, 'ef': 450.0, 'fg': 300.0,
-                                   'fh': 200.0, 'gi': 515.0, 'bf': 600.0, 'gj': 1055.0,
-                                   'yaw_a': 700.0, 'yaw_b': 60.0, 'yaw_c': 280.0},
+                       # 'lengths': {'ao': 130.0, 'bo': 120.0, 'bcx': 295.0, 'bcy': 60.0,
+                       #             'ae': 495.0, 'de': 100.0, 'ef': 450.0, 'fg': 300.0,
+                       #             'fh': 200.0, 'gi': 515.0, 'bf': 600.0, 'gj': 1055.0,
+                       #             'yaw_a': 700.0, 'yaw_b': 60.0, 'yaw_c': 280.0},
+                       'lengths': {'ao': 125.0, 'bo': 125.0, 'bcx': 287.5, 'bcy': 55.0,
+                                   'ae': 490.0, 'de': 106.0, 'ef': 450.0, 'fg': 300.0,
+                                   'fh': 197.0, 'gi': 505.0, 'bf': 590.0, 'gj': 1040.0,
+                                   'yaw_a': 689.5, 'yaw_b': 60.0, 'yaw_c': 275.0},
                        'verins': [535, 615, 520],
                        'matrix': np.array([[0, 1, 0],
                                            [-1, 0, 0],
@@ -43,10 +55,14 @@ ROBOT = {'legs': {FL: {'origin': (-0.5, 0.5, 0),
                        'og': 1,
                        'pos_abs': np.array([0.0, 0.0, 0.0])},
                   RR: {'origin': (0.5, -0.5, 0),
-                       'lengths': {'ao': 130.0, 'bo': 120.0, 'bcx': 290.0, 'bcy': 60.0,
-                                   'ae': 495.0, 'de': 100.0, 'ef': 445.0, 'fg': 300.0,
-                                   'fh': 200.0, 'gi': 500.0, 'bf': 600.0, 'gj': 1045.0,
-                                   'yaw_a': 700.0, 'yaw_b': 55.0, 'yaw_c': 280.0},
+                       # 'lengths': {'ao': 130.0, 'bo': 120.0, 'bcx': 290.0, 'bcy': 60.0,
+                       #             'ae': 495.0, 'de': 100.0, 'ef': 445.0, 'fg': 300.0,
+                       #             'fh': 200.0, 'gi': 500.0, 'bf': 600.0, 'gj': 1045.0,
+                       #             'yaw_a': 700.0, 'yaw_b': 55.0, 'yaw_c': 280.0},
+                       'lengths': {'ao': 125.0, 'bo': 125.0, 'bcx': 287.5, 'bcy': 55.0,
+                                   'ae': 490.0, 'de': 106.0, 'ef': 450.0, 'fg': 300.0,
+                                   'fh': 197.0, 'gi': 505.0, 'bf': 590.0, 'gj': 1040.0,
+                                   'yaw_a': 689.5, 'yaw_b': 60.0, 'yaw_c': 275.0},
                        'verins': [535, 615, 520],
                        'matrix': np.array([[-1, 0, 0],
                                            [0, -1, 0],
@@ -354,21 +370,27 @@ def inertial_mat_para(mass, length, depth, height):
            mass * (length ** 2 + height ** 2) / 12, \
            mass * (length ** 2 + depth ** 2) / 12
 
+
 def get_endpoint(leg_id, center, r):
     """
     Détermine l'écart en x et y par rapport au centre du point objectif du com au cours du mouvement de la jambe leg_id
     """
     if leg_id == 0:
-        l = get_leg_pos(1)
+        l1 = get_leg_pos(1)
+        l2 = get_leg_pos(3)
     elif leg_id == 1:
-        l = get_leg_pos(3)
+        l1 = get_leg_pos(2)
+        l2 = get_leg_pos(3)
     elif leg_id == 2:
-        l = get_leg_pos(0)
+        l1 = get_leg_pos(0)
+        l2 = get_leg_pos(1)
     else:
-        l = get_leg_pos(2)
-    dist_center_l = distance(l[0:2], center)
-    x = r * (l[0] - center[0]) / dist_center_l
-    y = r * (l[1] - center[1]) / dist_center_l
+        l1 = get_leg_pos(0)
+        l2 = get_leg_pos(2)
+    u = l1[0:2] + l2[0:2]
+    norm = distance(u, center)
+    x = r * (u[0] - center[0]) / norm
+    y = r * (u[1] - center[1]) / norm
     return x, y
 
 
@@ -516,6 +538,7 @@ def normal_vector(v):
     >>> normal_vector((0.3, -0.6))
     (0.6, 0.3)
     """
+    v = unitary_vec(v)
     return -1 * v[1], v[0]
 
 
@@ -534,7 +557,7 @@ def norm2(v):
 
 def norm(v):
     """
-    calcul la norme d'un vecteur
+    Calcule la norme d'un vecteur
 
     :param v: vecteur
     :return: norme
@@ -544,10 +567,19 @@ def norm(v):
 
 def unitary_vec(v):
     """
-    Calcul le vecteur unitaire/normalisé du vecteur en paramètre
+    Calcule le vecteur unitaire/normalisé du vecteur en paramètre
 
     :param v: vecteur
     :return: vecteur unitaire
+
+    >>> unitary_vec((0.3, 0))
+    (1.0, 0.0)
+    >>> unitary_vec((0, 12))
+    (0.0, 1.0)
+    >>> abs(unitary_vec((1, -1))[0] - np.cos(np.pi/4)) < 0.0001
+    True
+    >>> abs(unitary_vec((1, -1))[1] + np.cos(np.pi/4)) < 0.0001
+    True
     """
     n = norm(v)
     assert (n != 0)

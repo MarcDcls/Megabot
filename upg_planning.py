@@ -1,6 +1,6 @@
 import numpy as np
 
-from upg_kinetic import *
+from upg_kinematic import *
 from upg_mass_center import *
 from upg_tools import *
 
@@ -8,7 +8,7 @@ MIN_RADIUS = 2500
 MAX_RADIUS = 15000
 
 TRAJ_ACCUR = 50  # useless now
-DSTEP = 50
+DSTEP = 10
 STEP_HEIGHT = 0
 EPSILON = 20  # accuracy asked in movement
 
@@ -17,10 +17,15 @@ def cmd_joystick(d, r):
     """
     Traite les données reçues des commandes joystick pour paramétrer les trajectoires des 4 jambes.
     On suppose un input non nul : (d, r) != ((0, 0), 0)
+    Les coordonnées du centre de rotation sont dans le référentiel absolu
 
     :param d: vecteur unitaire de direction
     :param r: facteur de rotation (-1 < r < 1)
-    :return: centre de rotation, direction de déplacement.
+    :return:
+    - (direction, None) dans le cas d'un marche rectiligne
+    - (direction, +/- 1) dans le cas d'une rotation sur soi
+    - (direction, centre) dans le cas d'un marche courbe standard
+
     >>> cmd_joystick((1, 0), 0)
     (None, (1, 0))
     >>> cmd_joystick((0, 1), 0)
@@ -32,19 +37,19 @@ def cmd_joystick(d, r):
     >>> cmd_joystick((np.sqrt(3)/2, 1/2), -0.5)
     ((4375.0, -7577.722283113838), (0.8660254037844386, 0.5))
     """
-    if d[0] == 0 and d[1] == 0:
-        # rotation sur lui-même
-        c = (0, 0)
-    elif r == 0:
-        # marche tout droit
-        c = None
-    else:
-        # marche courbe standard
-        n = normal_vector(d)
-        signe_r = (r > 0) - (r < 0)
-        c = signe_r * (n[0] * MAX_RADIUS - signe_r * r * n[0] * (MAX_RADIUS - MIN_RADIUS)), \
-            signe_r * (n[1] * MAX_RADIUS - signe_r * r * n[1] * (MAX_RADIUS - MIN_RADIUS))
-    return c, d
+    if r == 0: # Cas d'une marche rectilligne
+        return unitary_vec(d), None
+
+    signe_r = (r > 0) - (r < 0)
+    if d[0] == 0 and d[1] == 0: # Cas d'une rotation sur soi
+        return None, signe_r
+
+    # Cas d'une marche courbe standard
+    n = normal_vector(d)
+    robot_center = intersection_legs()
+    c = robot_center[0] + signe_r * (n[0] * MAX_RADIUS - abs(r) * n[0] * (MAX_RADIUS - MIN_RADIUS)), \
+        robot_center[1] + signe_r * (n[1] * MAX_RADIUS - abs(r) * n[1] * (MAX_RADIUS - MIN_RADIUS))
+    return unitary_vec(d), c
 
 
 ############################## RELATIVE WAY ##################################
@@ -57,8 +62,8 @@ def compute_traj_form_joystick_rel(joystick):
     :param joystick: position du centre de rotation, direction
     :return: les quatres trajectoires
     """
-    centre, direction = joystick[0], joystick[1]
-    direction = unitary_vec(direction)
+    direction, centre = joystick[0], joystick[1]
+    # direction = unitary_vec(direction)
     print(joystick)
     traj = []
     r = []
@@ -182,47 +187,46 @@ def furthest_accessible_step_all_legs_rel(traj, step_height):
 ############################### ABSOLUTE WAY ##################################
 
 
-def compute_traj_from_joystick_leg_equals_distance(joystick, leg_id):
+def compute_traj_from_com(cmd, leg_pos, max_steps=40):
     """
     Compute the trajectory for one leg with a constant distance between each points of the discretization
 
-    :param joystick: ((rota_center_x, rota_center_y), (dir_x, dir_y))
-    :param leg_id: ID of the leg
+    :param cmd: commande obtenue par passage de l'input à cmd_joystick
+    :param leg_id: ID de la patte
     :return:
     """
-    centre, direction = joystick[0], joystick[1]
-    # direction = unitary_vec(direction)
-    pos = direct_abs(get_verins_12(), get_O(), get_omega())
-    radius = distance(pos[leg_id * 3 + 0:leg_id * 3 + 3], (centre[0], centre[1], 0))
-    n = int((2 * np.pi * radius) / DSTEP)
-    traj_leg = []
-    for i in range(n):
-        alpha = np.arccos(abs((centre[1] - pos[3 * leg_id + 1])) / radius)
-        signe_cx = (centre[0] - pos[leg_id * 3 + 0]) / abs(centre[0] - pos[leg_id * 3 + 0])
-        signe_cy = (centre[1] - pos[leg_id * 3 + 1]) / abs(centre[1] - pos[leg_id * 3 + 1])
-        if signe_cx < 0 and signe_cy < 0:
-            alpha = + np.pi / 2 - alpha
-        if signe_cx > 0 > signe_cy:
-            alpha = + np.pi / 2 + alpha
-        if signe_cx < 0 < signe_cy:
-            alpha = - np.pi / 2 + alpha
-        if signe_cx > 0 and signe_cy > 0:
-            alpha = - np.pi / 2 - alpha
-        traj_leg.append([radius * np.cos((2 * i * np.pi) / n + alpha) + centre[0],
-                         radius * np.sin((2 * i * np.pi) / n + alpha) + centre[1],
-                         pos[3 * leg_id + 2]])
-        # if len(traj_leg) == 0:
-        #     traj_leg = [radius * np.cos((2 * i * np.pi) / n + alpha) + centre[0],
-        #                 radius * np.sin((2 * i * np.pi) / n + alpha) + centre[1],
-        #                 pos[3 * leg_id + 2]]
-        # else:
-        #     traj_leg = np.vstack((traj_leg, (radius * np.cos((2 * i * np.pi) / n + alpha) + centre[0],
-        #                                      radius * np.sin((2 * i * np.pi) / n + alpha) + centre[1],
-        #                                      pos[3 * leg_id + 2])))
-    return traj_leg
+    d, c = cmd[0], cmd[1]
+    traj = []
+
+    if c is None: # Cas d'une marche rectiligne
+        for i in range(1, max_steps):
+            traj.append([leg_pos[0] + d[0] * i * DSTEP, leg_pos[1] + d[1] * i * DSTEP])
+        return traj
+
+    if c == 1 or c == -1: # Cas d'une rotation sur soi
+        # center = intersection_legs()[0:2]
+        center = [intersection_legs()[0] - 20, intersection_legs()[1] + 20]
+
+    else: # Cas d'une marche courbe standard
+        center = c
+
+    radius = distance(leg_pos[0:2], center)
+    alpha = DSTEP / radius  # Angle correspondant à un déplacement de DSTEP sur le cercle
+    R = np.array([[np.cos(alpha), - np.sin(alpha)],
+                  [np.sin(alpha), np.cos(alpha)]])
+
+    if c == -1: # ???
+        R = R.T
+
+    current = leg_pos[0:2] - center
+    for i in range(1, max_steps):
+        current = center + R @ current
+        # print("current :", current)
+        traj.append(current)
+    return traj
 
 
-def compute_traj_form_joystick_abs_equal_dist(joystick):
+def compute_traj_form_joystick_abs_equal_dist(joystick, max_steps=40):
     """
     Compute all 4 trajectories for each leg with a constant distance between each points of the discretization
 
@@ -233,7 +237,7 @@ def compute_traj_form_joystick_abs_equal_dist(joystick):
     r = []
     pos = direct_abs(get_verins_12(), get_O(), get_omega())
     for leg in range(4):
-        L = compute_traj_from_joystick_leg_equals_distance(joystick, leg)
+        L = compute_traj_from_com(joystick, get_leg_pos(leg), max_steps=max_steps)
         traj.append(L)
     return traj
 
@@ -604,15 +608,12 @@ def move_abs(traj_leg, leg_id, traj_com, reg_val=0.01, const_omega=True, max_ome
     return LV, LO, LOmega
 
 
-def planning(target, com):
-    return 0
-
-
 ################################ SIMPLE WALK ##################################
 
 def init_com(radius=150, passenger_weight=80.0, nb_steps=20):
     P = get_leg_pos(0)
     L = np.linspace(0, radius * np.sqrt(2) / 2, nb_steps)
+    # L = np.linspace(0, radius, nb_steps)
     traj_leg = np.full((nb_steps, 3), [P[0], P[1], P[2]])
     traj_com = [[-l, -l] for l in L]
 
@@ -634,13 +635,19 @@ def gen_com_traj(leg_id, nb_steps, radius=150):
 
     endpoint = get_endpoint(leg_id, center, r=radius)
     d_com_center = distance(com)
-    calpha = min(((com[0] - center[0]) * endpoint[0] + (com[1] - center[1]) * endpoint[1]) / (d_com_center * radius), 1)
-    # print(calpha)
+    prod_scal = (com[0] - center[0]) * endpoint[0] + (com[1] - center[1]) * endpoint[1]
+    # print("prod scal :", prod_scal)
+    calpha = min(prod_scal / (d_com_center * radius), 1)
+    # print("cos(alpha) :", calpha)
     alpha = np.arccos(calpha)
-    beta = - (nb_steps - 1) * alpha / nb_steps
+    # print("alpha :", alpha)
+    beta = (nb_steps - 1) * alpha / nb_steps
+    # print(beta)
+    if beta > np.pi / 2:
+        beta  = np.pi - beta
     R = np.array([[np.cos(beta), -np.sin(beta)],
                   [np.sin(beta), np.cos(beta)]])
-    return center + R @ endpoint
+    return center + R.T @ endpoint
 
 
 def move_abs_leg_autocom(traj, leg_id, com_radius=150, reg_val=0.01, const_omega=True, max_omega=10, passenger_weight=80.0):
@@ -710,30 +717,93 @@ def move_abs_leg_autocom(traj, leg_id, com_radius=150, reg_val=0.01, const_omega
     return LV, LO, LOmega
 
 
-def legs_up(nb_steps=30, amp=200, com_radius=150, passenger_weight=80.0):
-    LV = init_com(nb_steps=20)[0]
+def legs_up(nb_steps=30, amp=200, com_radius=150, passenger_weight=80.0, nb_tours=1, all_infos=False):
+    LV, LO, LOmega = init_com(radius=com_radius, nb_steps=20, passenger_weight=passenger_weight)
 
-    traj_leg = traj_abs_sin_1(nb_steps, amp, 0)
-    lv = move_abs_leg_autocom(traj_leg, 0, com_radius=com_radius, passenger_weight=passenger_weight)[0]
-    for i in range(nb_steps):
-        LV.append(lv[i])
+    for i in range(nb_tours):
+        traj_leg = traj_abs_sin_1(nb_steps, amp, 0)
+        lv, lo, lomega = move_abs_leg_autocom(traj_leg, 0, com_radius=com_radius, passenger_weight=passenger_weight)
+        for i in range(nb_steps):
+            LV.append(lv[i])
+            LO.append(lo[i])
+            LOmega.append(lomega[i])
 
-    traj_leg = traj_abs_sin_1(nb_steps, amp, 2)
-    lv = move_abs_leg_autocom(traj_leg, 2, com_radius=com_radius, passenger_weight=passenger_weight)[0]
-    for i in range(nb_steps):
-        LV.append(lv[i])
+        traj_leg = traj_abs_sin_1(nb_steps, amp, 2)
+        lv, lo, lomega = move_abs_leg_autocom(traj_leg, 2, com_radius=com_radius, passenger_weight=passenger_weight)
+        for i in range(nb_steps):
+            LV.append(lv[i])
+            LO.append(lo[i])
+            LOmega.append(lomega[i])
 
-    traj_leg = traj_abs_sin_1(nb_steps, amp, 3)
-    lv = move_abs_leg_autocom(traj_leg, 3, com_radius=com_radius, passenger_weight=passenger_weight)[0]
-    for i in range(nb_steps):
-        LV.append(lv[i])
+        traj_leg = traj_abs_sin_1(nb_steps, amp, 3)
+        lv, lo, lomega = move_abs_leg_autocom(traj_leg, 3, com_radius=com_radius, passenger_weight=passenger_weight)
+        for i in range(nb_steps):
+            LV.append(lv[i])
+            LO.append(lo[i])
+            LOmega.append(lomega[i])
 
-    traj_leg = traj_abs_sin_1(nb_steps, amp, 1)
-    lv = move_abs_leg_autocom(traj_leg, 1, com_radius=com_radius, passenger_weight=passenger_weight)[0]
-    for i in range(nb_steps):
-        LV.append(lv[i])
+        traj_leg = traj_abs_sin_1(nb_steps, amp, 1)
+        lv, lo, lomega = move_abs_leg_autocom(traj_leg, 1, com_radius=com_radius, passenger_weight=passenger_weight)
+        for i in range(nb_steps):
+            LV.append(lv[i])
+            LO.append(lo[i])
+            LOmega.append(lomega[i])
 
+    if all_infos:
+        return LV, LO, LOmega
     return LV
+
+
+def compute_traj_up(leg_pos, height):
+    traj = [[leg_pos[0], leg_pos[1], leg_pos[2] + DSTEP]]
+    while traj[-1][2] < height:
+        new_z = traj[-1][2] + DSTEP
+        if new_z > height:
+            new_z = height
+        traj.append([traj[0][0], traj[0][1], new_z])
+    return traj
+
+
+def compute_traj_down(leg_pos):
+    traj = [[leg_pos[0], leg_pos[1], leg_pos[2] - DSTEP]]
+    while traj[-1][2] > 0:
+        new_z = traj[-1][2] - DSTEP
+        if new_z < 0:
+            new_z = 0
+        traj.append([traj[0][0], traj[0][1], new_z])
+    return traj
+
+
+def simple_walk(joystick, nb_steps=20, height=200, com_radius=150, passenger_weight=80.0, nb_tours=1, debug=False):
+    LV, LO, LOmega= init_com(radius=com_radius, nb_steps=20, passenger_weight=passenger_weight)
+
+    for i in range(nb_tours):
+        for j in range(4):
+            if j == 0:
+                l = 0
+            elif j == 1:
+                l = 2
+            elif j == 2:
+                l = 3
+            else:
+                l = 1
+
+            traj_up = compute_traj_up(get_leg_pos(l), height)
+            traj_mvt = compute_traj_from_com(joystick, traj_up[-1], nb_steps)
+            traj_down = compute_traj_down(traj_mvt[-1])
+
+            lv, lo, lomega = move_abs_leg_autocom(traj_up + traj_mvt + traj_down, l, com_radius=com_radius,
+                                                  passenger_weight=passenger_weight, const_omega=False)
+            for k in range(len(lv)):
+                LV.append(lv[k])
+                if debug:
+                    LO.append(lo[k])
+                    LOmega.append(lomega[k])
+
+    if debug:
+        return LV, LO, LOmega
+    return LV
+
 
 ################################ DEPRECATED ###################################
 

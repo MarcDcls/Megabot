@@ -13,7 +13,7 @@ from kinetic import *
 from geo import *
 from com import *
 from visu import *
-import upg_kinetic as upg_k
+import upg_kinematic as upg_k
 import upg_planning as upg_p
 
 

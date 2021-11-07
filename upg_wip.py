@@ -1,4 +1,4 @@
-from upg_kinetic import *
+from upg_kinematic import *
 
 
 def move_abs_one_leg(traj, leg_id, reg_val=0.01, const_omega=True, max_omega=10):

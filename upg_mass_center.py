@@ -91,6 +91,21 @@ def center_of_mass(V, passenger_weight=80.):
 
     return G / total_weight
 
+def centers_of_mass(LV, LO, LOmega, passenger_weight=80.):
+    """
+    Retourne les coordonnées du centre de masse du robot dans le référentiel absolu pour un déplacement donné
+
+    :param LV: élongations des vérins au cours du déplacement
+    :param LO: positions du centre du robot au cours du déplacement
+    :param LOmega: positions angulaires du robot au cours du déplacement
+    :param passenger_weight: la masse du passager, 0 s'il n'y en a pas
+    :return: liste des positions du centre de masse du robot dans le reférentiel absolu
+    """
+    Lcom = []
+    for i in range(len(LV)):
+        Lcom.append(robot_ref_to_abs(center_of_mass(LV[i], passenger_weight=passenger_weight), LO[i], LOmega[i]))
+    return Lcom
+
 
 def plan_from_points(A, B, C):
     """
